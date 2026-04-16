@@ -2,9 +2,12 @@
 
 import { Calendar, HelpCircle, ShieldCheck } from 'lucide-react';
 import { motion } from 'motion/react';
+import { useRouter } from 'next/navigation';
 import { Button } from './Button';
 
 export default function CTA() {
+  const router = useRouter();
+
   return (
     <section className='bg-surface px-6 py-32'>
       <div className='mx-auto max-w-4xl text-center'>
@@ -23,7 +26,12 @@ export default function CTA() {
             <Button variant='primary' size='lg' iconLeft={<Calendar />}>
               Agendar minha consulta
             </Button>
-            <Button variant='outlined' size='lg' iconLeft={<HelpCircle />}>
+            <Button
+              variant='outlined'
+              size='lg'
+              iconLeft={<HelpCircle />}
+              onClick={() => router.push('/faq')}
+            >
               Perguntas Frequentes
             </Button>
           </div>

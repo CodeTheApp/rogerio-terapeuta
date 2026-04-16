@@ -1,4 +1,5 @@
 import { MapPin } from 'lucide-react';
+import Link from 'next/link';
 import { ShareButton } from './ShareButton';
 
 export default function Footer() {
@@ -16,12 +17,23 @@ export default function Footer() {
             </p>
           </div>
 
-          {/* <div className="flex flex-wrap justify-center gap-8 font-bold text-on-surface-variant/80 text-xs uppercase tracking-ultra-wide">
-            <a href="#" className="hover:text-primary transition-colors">Políticas</a>
-            <a href="#" className="hover:text-primary transition-colors">Termos</a>
-            <a href="#" className="hover:text-primary transition-colors">FAQ</a>
-            <a href="#" className="hover:text-primary transition-colors">Contato</a>
-          </div> */}
+          <div className='flex flex-wrap justify-center gap-8 font-bold text-on-surface-variant/80 text-xs uppercase tracking-ultra-wide'>
+            <Link
+              href='/faq'
+              className='hover:text-primary transition-colors'
+            >
+              FAQ
+            </Link>
+            <a href='#' className='hover:text-primary transition-colors'>
+              Políticas
+            </a>
+            <a href='#' className='hover:text-primary transition-colors'>
+              Termos
+            </a>
+            <a href='#' className='hover:text-primary transition-colors'>
+              Contato
+            </a>
+          </div>
 
           <div className='flex items-center gap-4'>
             <ShareButton />

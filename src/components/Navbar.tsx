@@ -7,25 +7,34 @@ import { useEffect, useState } from "react";
 import { Calendar, Menu, X } from "lucide-react";
 import { Button } from "./Button";
 
-const sections = [
-  { label: "Início", id: "inicio" },
-  { label: "Sobre", id: "sobre" },
-  { label: "Especialidades", id: "especialidades" },
-  { label: "Depoimentos", id: "depoimentos" },
+type NavItem = {
+  label: string;
+  href: string;
+  id: string;
+  kind: "anchor" | "page";
+};
+
+const navItems: NavItem[] = [
+  { label: "Início", href: "/", id: "inicio", kind: "anchor" },
+  { label: "Sobre", href: "/#sobre", id: "sobre", kind: "anchor" },
+  { label: "Especialidades", href: "/#especialidades", id: "especialidades", kind: "anchor" },
+  { label: "Depoimentos", href: "/#depoimentos", id: "depoimentos", kind: "anchor" },
+  { label: "Blog", href: "/blog", id: "blog", kind: "page" },
+  { label: "Contato", href: "/contato", id: "contato", kind: "page" },
 ];
+
+const HOME_SECTION_IDS = ["sobre", "especialidades", "depoimentos", "blog"];
 
 export default function Navbar() {
   const pathname = usePathname();
   const isHome = pathname === "/";
-  const isBlog = pathname.startsWith("/blog");
   const [activeSection, setActiveSection] = useState("inicio");
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
   useEffect(() => {
     if (!isHome) return;
 
-    const sectionIds = ["sobre", "especialidades", "depoimentos", "blog"];
-    const elements = sectionIds
+    const elements = HOME_SECTION_IDS
       .map((id) => document.getElementById(id))
       .filter(Boolean) as HTMLElement[];
 
@@ -39,10 +48,8 @@ export default function Navbar() {
 
         if (visible.length > 0) {
           setActiveSection(visible[0].target.id);
-        } else {
-          if (window.scrollY < 200) {
-            setActiveSection("inicio");
-          }
+        } else if (window.scrollY < 200) {
+          setActiveSection("inicio");
         }
       },
       { threshold: 0.3 }
@@ -51,9 +58,7 @@ export default function Navbar() {
     elements.forEach((el) => observer.observe(el));
 
     const handleScroll = () => {
-      if (window.scrollY < 200) {
-        setActiveSection("inicio");
-      }
+      if (window.scrollY < 200) setActiveSection("inicio");
     };
     window.addEventListener("scroll", handleScroll);
 
@@ -78,24 +83,43 @@ export default function Navbar() {
     };
   }, [isMobileMenuOpen]);
 
-  const scrollToSection = (id: string) => {
+  const isItemActive = (item: NavItem) => {
+    if (item.kind === "page") {
+      return pathname === item.href || pathname.startsWith(`${item.href}/`);
+    }
+    if (!isHome) return false;
+    return activeSection === item.id;
+  };
+
+  const handleAnchorClick = (
+    e: React.MouseEvent<HTMLAnchorElement>,
+    item: NavItem
+  ) => {
     setIsMobileMenuOpen(false);
-    if (id === "inicio") {
+    if (!isHome || item.kind !== "anchor") return;
+
+    e.preventDefault();
+    if (item.id === "inicio") {
       window.scrollTo({ top: 0, behavior: "smooth" });
+      history.replaceState(null, "", "/");
       return;
     }
-    const el = document.getElementById(id);
+    const el = document.getElementById(item.id);
     if (el) {
       el.scrollIntoView({ behavior: "smooth" });
+      history.replaceState(null, "", `/#${item.id}`);
     }
   };
 
-  const getLinkClass = (id: string) => {
-    const isActive = isHome && activeSection === id;
-    return isActive
+  const linkClass = (active: boolean) =>
+    active
       ? "text-primary font-semibold border-b-2 border-primary pb-1"
       : "text-on-surface-variant opacity-80 hover:opacity-100 hover:text-primary transition-colors duration-200";
-  };
+
+  const mobileLinkClass = (active: boolean) =>
+    active
+      ? "text-primary font-semibold"
+      : "text-on-surface-variant hover:text-primary transition-colors";
 
   return (
     <motion.nav
@@ -111,37 +135,17 @@ export default function Navbar() {
           Rogério Viana
         </Link>
 
-        <div className="hidden md:flex items-center space-x-8 font-serif font-medium tracking-tight">
-          {isHome ? (
-            <>
-              {sections.map((s) => (
-                <button
-                  key={s.id}
-                  onClick={() => scrollToSection(s.id)}
-                  className={getLinkClass(s.id)}
-                >
-                  {s.label}
-                </button>
-              ))}
-            </>
-          ) : (
+        <div className="hidden md:flex items-center gap-6 lg:gap-8 font-serif font-medium tracking-tight">
+          {navItems.map((item) => (
             <Link
-              href="/"
-              className="text-on-surface-variant opacity-80 hover:opacity-100 hover:text-primary transition-colors duration-200"
+              key={item.id}
+              href={item.href}
+              onClick={(e) => handleAnchorClick(e, item)}
+              className={linkClass(isItemActive(item))}
             >
-              Início
+              {item.label}
             </Link>
-          )}
-          <Link
-            href="/blog"
-            className={
-              isBlog || (isHome && activeSection === "blog")
-                ? "text-primary font-semibold border-b-2 border-primary pb-1"
-                : "text-on-surface-variant opacity-80 hover:opacity-100 hover:text-primary transition-colors duration-200"
-            }
-          >
-            Blog
-          </Link>
+          ))}
         </div>
 
         <div className="flex items-center gap-2">
@@ -178,36 +182,16 @@ export default function Navbar() {
             className="md:hidden glass border-t border-outline-variant/40"
           >
             <div className="flex flex-col items-start px-6 py-8 gap-6 font-serif text-lg">
-              {isHome ? (
-                sections.map((s) => (
-                  <button
-                    key={s.id}
-                    onClick={() => scrollToSection(s.id)}
-                    className={`text-left ${getLinkClass(s.id)}`}
-                  >
-                    {s.label}
-                  </button>
-                ))
-              ) : (
+              {navItems.map((item) => (
                 <Link
-                  href="/"
-                  onClick={() => setIsMobileMenuOpen(false)}
-                  className="text-on-surface-variant hover:text-primary transition-colors"
+                  key={item.id}
+                  href={item.href}
+                  onClick={(e) => handleAnchorClick(e, item)}
+                  className={mobileLinkClass(isItemActive(item))}
                 >
-                  Início
+                  {item.label}
                 </Link>
-              )}
-              <Link
-                href="/blog"
-                onClick={() => setIsMobileMenuOpen(false)}
-                className={
-                  isBlog || (isHome && activeSection === "blog")
-                    ? "text-primary font-semibold border-b-2 border-primary pb-1"
-                    : "text-on-surface-variant hover:text-primary transition-colors"
-                }
-              >
-                Blog
-              </Link>
+              ))}
               <div className="pt-2">
                 <Button
                   variant="primary"

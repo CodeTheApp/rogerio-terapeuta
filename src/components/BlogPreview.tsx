@@ -48,13 +48,13 @@ export default function BlogPreview() {
                   <Tag variant="sage" size="sm">{post.category}</Tag>
                   <span className="text-on-surface-variant/60 text-xs font-medium">{post.date}</span>
                 </div>
-                <h3 className="text-3xl font-serif font-bold text-on-surface mb-4 leading-tight group-hover:text-primaria transition-colors">
+                <h3 className="text-3xl font-serif font-bold text-on-surface mb-4 leading-tight group-hover:text-primary transition-colors">
                   {post.title}
                 </h3>
                 <p className="text-on-surface-variant text-lg line-clamp-2 mb-8 leading-relaxed">
                   {post.excerpt}
                 </p>
-                <div className="mt-auto flex items-center gap-2 text-primaria font-bold">
+                <div className="mt-auto flex items-center gap-2 text-primary font-bold">
                   <span>Continuar Lendo</span>
                   <ArrowUpRight className="w-4 h-4" />
                 </div>

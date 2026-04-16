@@ -11,28 +11,28 @@ const specialties = [
     icon: Brain,
     tags: ["Crises de Pânico", "Burnout"],
     className: "md:col-span-2 bg-surface-container-high",
-    iconColor: "text-primaria"
+    iconColor: "text-primary"
   },
   {
     title: "Relacionamentos",
     description: "Trabalho focado na comunicação assertiva, resolução de conflitos e construção de vínculos saudáveis.",
     icon: Users,
-    className: "bg-primaria text-on-primaria",
-    iconColor: "text-on-primaria"
+    className: "bg-primary text-on-primary",
+    iconColor: "text-on-primary"
   },
   {
     title: "Desenvolvimento Pessoal",
     description: "Processo de autoconhecimento para fortalecer a autoestima e a tomada de decisões conscientes.",
     icon: Heart,
-    className: "bg-secundaria text-on-secundaria",
-    iconColor: "text-on-secundaria"
+    className: "bg-secondary text-on-secondary",
+    iconColor: "text-on-secondary"
   },
   {
     title: "Psicoterapia e Identidade",
     description: "Abordagem sensível às questões de raça, gênero e pertencimento social na constituição do sujeito.",
     icon: Sparkles,
     className: "md:col-span-2 bg-surface-container-highest",
-    iconColor: "text-primaria",
+    iconColor: "text-primary",
     image: "https://images.unsplash.com/photo-1518531933037-91b2f5f229cc?q=80&w=1974&auto=format&fit=crop"
   }
 ];
@@ -60,7 +60,7 @@ export default function Specialties() {
                 <div className={spec.image ? "md:w-1/2" : ""}>
                   <spec.icon className={`w-12 h-12 mb-8 ${spec.iconColor}`} />
                   <h3 className="text-3xl font-serif mb-4 leading-tight">{spec.title}</h3>
-                  <p className={`text-lg mb-6 ${spec.className.includes('primaria') || spec.className.includes('secundaria') ? 'opacity-90' : 'text-on-surface-variant'}`}>
+                  <p className={`text-lg mb-6 ${spec.className.includes('primary') || spec.className.includes('secondary') ? 'opacity-90' : 'text-on-surface-variant'}`}>
                     {spec.description}
                   </p>
                   {spec.tags && (

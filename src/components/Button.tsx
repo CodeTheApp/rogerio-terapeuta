@@ -45,29 +45,29 @@ export interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
 const baseClasses = [
   "inline-flex items-center justify-center font-sans font-semibold",
   "rounded-xl transition-colors duration-200 ease-out cursor-pointer",
-  "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primaria focus-visible:ring-offset-2 focus-visible:ring-offset-surface",
+  "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 focus-visible:ring-offset-surface",
   "disabled:cursor-not-allowed disabled:opacity-60",
 ].join(" ");
 
 const variantClasses: Record<Variant, string> = {
   primary: [
-    "bg-primaria text-on-primaria",
-    "hover:bg-primaria-container",
+    "bg-primary text-on-primary",
+    "hover:bg-primary-container",
     "disabled:bg-surface-container-highest disabled:text-outline",
   ].join(" "),
   secondary: [
-    "bg-secundaria-container text-on-secundaria-container",
-    "hover:bg-secundaria hover:text-on-secundaria",
+    "bg-secondary-container text-on-secondary-container",
+    "hover:bg-secondary hover:text-on-secondary",
     "disabled:bg-surface-container-highest disabled:text-outline",
   ].join(" "),
   tertiary: [
-    "bg-transparent text-primaria",
-    "hover:bg-surface-container-low hover:text-primaria-container",
+    "bg-transparent text-primary",
+    "hover:bg-surface-container-low hover:text-primary-container",
     "disabled:text-outline disabled:hover:bg-transparent",
   ].join(" "),
   outlined: [
-    "bg-transparent text-primaria border-[1.5px] border-primaria",
-    "hover:bg-primaria hover:text-on-primaria",
+    "bg-transparent text-primary border-[1.5px] border-primary",
+    "hover:bg-primary hover:text-on-primary",
     "disabled:border-outline-variant disabled:text-outline",
     "disabled:hover:bg-transparent disabled:hover:text-outline",
   ].join(" "),

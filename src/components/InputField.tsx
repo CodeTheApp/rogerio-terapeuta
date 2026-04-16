@@ -19,7 +19,7 @@
  *
  * States:
  *   - rest:     no border, placeholder in outline color
- *   - focus:    ghost border in primaria (DESIGN.md)
+ *   - focus:    ghost border in primary (DESIGN.md)
  *   - filled:   value in on-surface
  *   - error:    red border + helper text
  *   - disabled: 50% opacity + recessed background
@@ -87,9 +87,9 @@ export function InputField({
     : "bg-surface-container-highest";
 
   const fieldBorder = hasError
-    ? "border-[1.5px] border-erro"
+    ? "border-[1.5px] border-error"
     : focused && !disabled
-    ? "border-[1.5px] border-primaria"
+    ? "border-[1.5px] border-primary"
     : "border-[1.5px] border-transparent";
 
   const fieldClasses = [
@@ -146,7 +146,7 @@ export function InputField({
       </div>
 
       {error && (
-        <p id={`${inputId}-error`} role="alert" className="font-sans text-xs text-erro">
+        <p id={`${inputId}-error`} role="alert" className="font-sans text-xs text-error">
           {error}
         </p>
       )}

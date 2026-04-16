@@ -19,8 +19,8 @@ export default function About() {
             className="rounded-4xl w-full aspect-square object-cover grayscale-[20%] hover:grayscale-0 transition-all duration-700"
             referrerPolicy="no-referrer"
           />
-          <div className="absolute -top-6 -right-6 bg-surface-container-lowest p-8 rounded-2xl shadow-xl hidden md:block border border-primaria/5">
-            <p className="font-serif text-3xl text-primaria font-bold">15+</p>
+          <div className="absolute -top-6 -right-6 bg-surface-container-lowest p-8 rounded-2xl shadow-xl hidden md:block border border-primary/5">
+            <p className="font-serif text-3xl text-primary font-bold">15+</p>
             <p className="text-xs uppercase tracking-ultra-wide text-on-surface-variant font-semibold">Anos de Prática</p>
           </div>
         </motion.div>
@@ -31,7 +31,7 @@ export default function About() {
           viewport={{ once: true }}
           className="order-1 md:order-2"
         >
-          <span className="text-secundaria font-bold uppercase tracking-ultra-wide text-sm mb-6 block">Sobre Mim</span>
+          <span className="text-secondary font-bold uppercase tracking-ultra-wide text-sm mb-6 block">Sobre Mim</span>
           <h2 className="text-4xl md:text-5xl font-serif mb-8 text-on-surface leading-tight">Um olhar atento às profundezas da alma</h2>
           <div className="space-y-6 text-on-surface-variant text-lg leading-relaxed">
             <p>
@@ -47,7 +47,7 @@ export default function About() {
                 "Especialista em Fenomenologia Existencial"
               ].map((item, i) => (
                 <li key={i} className="flex items-start gap-4">
-                  <CheckCircle2 className="w-6 h-6 text-primaria shrink-0 mt-0.5" />
+                  <CheckCircle2 className="w-6 h-6 text-primary shrink-0 mt-0.5" />
                   <span className="text-on-surface">{item}</span>
                 </li>
               ))}

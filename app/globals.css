@@ -5,48 +5,31 @@
  * Terra e Alma — Design System Tokens
  * Source: Figma DS "The Grounded Sanctuary"
  *
- * @theme      → cores (substitui defaults)
- * @theme inline → fontes, texto, sombras, gradiente (adiciona aos defaults)
- *
- * Spacing e radius usam a escala numérica padrão do Tailwind.
- * Tokens nomeados do DS ficam como CSS vars para uso direto nos componentes DS.
+ * All tokens use English naming.
+ * @theme      → colors (replaces TW defaults)
+ * @theme inline → fonts, text, shadows (extends TW defaults)
  */
 
 @theme {
-  /* ── CORES ── */
-
-  /* Primária — Terracota */
-  --color-primaria: #84432e;
-  --color-primaria-container: #a25a44;
-  --color-on-primaria: #ffffff;
-  --color-on-primaria-container: #ffdbcf;
-
-  /* Aliases inglês */
+  /* ── PRIMARY — Terracotta ── */
   --color-primary: #84432e;
   --color-primary-container: #a25a44;
   --color-on-primary: #ffffff;
+  --color-on-primary-container: #ffdbcf;
 
-  /* Secundária — Sálvia */
-  --color-secundaria: #57624d;
-  --color-secundaria-container: #dbe7cc;
-  --color-on-secundaria: #ffffff;
-  --color-on-secundaria-container: #5d6853;
-
+  /* ── SECONDARY — Sage ── */
   --color-secondary: #57624d;
   --color-secondary-container: #dbe7cc;
+  --color-on-secondary: #ffffff;
   --color-on-secondary-container: #5d6853;
 
-  /* Terciária — Bege quente */
-  --color-terciaria: #786c5a;
-  --color-terciaria-container: #d9c9b4;
-  --color-on-terciaria: #ffffff;
-  --color-on-terciaria-container: #2b2116;
+  /* ── TERTIARY — Warm Beige ── */
+  --color-tertiary: #786c5a;
+  --color-tertiary-container: #d9c9b4;
+  --color-on-tertiary: #ffffff;
+  --color-on-tertiary-container: #2b2116;
 
-  --color-tertiary: #5f5443;
-  --color-tertiary-container: #786c5a;
-  --color-on-tertiary-container: #ffefdb;
-
-  /* Superfícies */
+  /* ── SURFACES ── */
   --color-surface: #fdf9f3;
   --color-surface-container-low: #f7f3ed;
   --color-surface-container: #f1ede7;
@@ -55,26 +38,26 @@
   --color-surface-container-lowest: #ffffff;
   --color-surface-variant: #e5dfd3;
 
-  /* Texto */
+  /* ── TEXT ── */
   --color-on-surface: #1c1c18;
   --color-on-surface-variant: #53433e;
 
-  /* Contornos */
+  /* ── OUTLINE ── */
   --color-outline: #85736d;
   --color-outline-variant: #d8c2bb;
 
-  /* Semântica */
-  --color-erro: #b3261e;
+  /* ── SEMANTIC ── */
+  --color-error: #b3261e;
 }
 
 @theme inline {
-  /* ── FONTES ── */
+  /* ── FONTS ── */
   --font-serif: var(--font-noto-serif), Georgia, "Times New Roman", serif;
   --font-sans: var(--font-manrope), system-ui, -apple-system, sans-serif;
   --font-headline: var(--font-noto-serif), Georgia, "Times New Roman", serif;
   --font-body: var(--font-manrope), system-ui, -apple-system, sans-serif;
 
-  /* ── TAMANHOS DE TEXTO DS ── */
+  /* ── TEXT SIZES ── */
   --text-label-md: 0.8125rem;
   --text-label-md--line-height: 1.2;
   --text-label-md--letter-spacing: 0.1em;
@@ -87,6 +70,9 @@
 
   --text-body-lg: 1.125rem;
   --text-body-lg--line-height: 1.65;
+
+  --text-body-between: 0.9375rem;
+  --text-body-between--line-height: 1.6;
 
   --text-title-sm: 1.25rem;
   --text-title-sm--line-height: 1.3;
@@ -120,63 +106,20 @@
   --text-display-lg--line-height: 1.1;
   --text-display-lg--letter-spacing: -0.02em;
 
-  /* ── RAIOS extras ── */
+  /* ── RADIUS ── */
   --radius-3xl: 2rem;
   --radius-4xl: 2.5rem;
   --radius-5xl: 3rem;
 
-  /* ── TRACKING extras ── */
+  /* ── TRACKING ── */
   --tracking-editorial: -0.02em;
-  --tracking-titulo: -0.015em;
-  --tracking-rotulo: 0.15em;
+  --tracking-title: -0.015em;
+  --tracking-label: 0.15em;
   --tracking-ultra-wide: 0.2em;
 
-  /* ── TEXT extras ── */
-  --text-body-between: 0.9375rem;
-  --text-body-between--line-height: 1.6;
-
-  /* ── SOMBRAS DS ── */
+  /* ── SHADOWS ── */
   --shadow-ambient: 0 20px 40px rgba(83, 67, 62, 0.06);
   --shadow-subtle: 0 8px 24px rgba(83, 67, 62, 0.04);
-}
-
-/*
- * Tokens DS nomeados — CSS vars puras, não interferem no Tailwind.
- * Componentes DS podem usar var(--ds-spacing-xl), var(--ds-radius-xl), etc.
- */
-:root {
-  /* Spacing DS */
-  --ds-spacing-4xs: 0.125rem;
-  --ds-spacing-3xs: 0.25rem;
-  --ds-spacing-2xs: 0.5rem;
-  --ds-spacing-xs: 0.75rem;
-  --ds-spacing-sm: 1rem;
-  --ds-spacing-md: 1.25rem;
-  --ds-spacing-lg: 1.5rem;
-  --ds-spacing-xl: 2rem;
-  --ds-spacing-2xl: 2.5rem;
-  --ds-spacing-3xl: 3rem;
-  --ds-spacing-4xl: 4rem;
-  --ds-spacing-5xl: 5rem;
-  --ds-spacing-6xl: 6rem;
-  --ds-spacing-7xl: 7.5rem;
-
-  /* Radius DS */
-  --ds-radius-none: 0;
-  --ds-radius-sm: 0.25rem;
-  --ds-radius-md: 0.75rem;
-  --ds-radius-lg: 1rem;
-  --ds-radius-xl: 1.5rem;
-  --ds-radius-2xl: 2rem;
-  --ds-radius-full: 9999px;
-
-  /* Tracking DS */
-  --ds-tracking-editorial: -0.02em;
-  --ds-tracking-titulo: -0.015em;
-  --ds-tracking-rotulo: 0.15em;
-
-  /* Gradiente */
-  --ds-gradient-hero: linear-gradient(135deg, #84432e 0%, #a25a44 100%);
 }
 
 /* ── Base ── */
@@ -199,12 +142,7 @@
 }
 
 @utility bg-gradient-hero {
-  background-image: var(--ds-gradient-hero);
-}
-
-.glass-nav {
-  background: rgba(253, 249, 243, 0.8);
-  backdrop-filter: blur(12px);
+  background-image: linear-gradient(135deg, #84432e 0%, #a25a44 100%);
 }
 
 html {

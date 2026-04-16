@@ -26,7 +26,7 @@ export default function CTA() {
             </Button>
           </div>
           <p className="mt-10 text-on-surface-variant text-sm font-medium flex items-center justify-center gap-2">
-            <ShieldCheck className="w-5 h-5 text-secundaria" />
+            <ShieldCheck className="w-5 h-5 text-secondary" />
             Atendimento online e presencial (São Paulo/SP)
           </p>
         </motion.div>

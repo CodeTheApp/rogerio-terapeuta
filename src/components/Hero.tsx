@@ -16,7 +16,7 @@ export default function Hero() {
         >
           <h1 className="text-5xl md:text-7xl font-serif text-on-surface leading-tight mb-8 tracking-tight">
             Espaço de Escuta e <br />
-            <span className="italic text-primaria">Transformação</span>
+            <span className="italic text-primary">Transformação</span>
           </h1>
           <p className="text-lg md:text-xl text-on-surface-variant max-w-xl mb-10 leading-relaxed">
             Um refúgio para acolher suas dores, redescobrir suas forças e
@@ -47,7 +47,7 @@ export default function Hero() {
               referrerPolicy="no-referrer"
             />
           </div>
-          <div className="absolute -bottom-10 -left-10 w-64 h-64 bg-secundaria/10 rounded-full blur-3xl -z-0" />
+          <div className="absolute -bottom-10 -left-10 w-64 h-64 bg-secondary/10 rounded-full blur-3xl -z-0" />
         </motion.div>
       </div>
     </section>

@@ -60,18 +60,18 @@ const variantStyles: Record<
 > = {
   default: {
     container: "bg-gradient-hero p-[6rem]",
-    label: "text-on-primaria-container",
-    quote: "text-on-primaria",
+    label: "text-on-primary-container",
+    quote: "text-on-primary",
     quoteSize: "text-[3rem] leading-[1.2] tracking-[-0.015em]",
-    divider: "bg-on-primaria-container opacity-60",
-    author: "text-on-primaria-container",
+    divider: "bg-on-primary-container opacity-60",
+    author: "text-on-primary-container",
   },
   subtle: {
     container: "bg-surface-container-low px-20 py-[4.5rem]",
-    label: "text-primaria",
+    label: "text-primary",
     quote: "text-on-surface",
     quoteSize: "text-headline-md",
-    divider: "bg-primaria opacity-40",
+    divider: "bg-primary opacity-40",
     author: "text-on-surface-variant",
   },
 };

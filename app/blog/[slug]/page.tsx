@@ -3,18 +3,21 @@ import { posts } from "@/src/data/posts";
 import PostContent from "@/src/components/PostContent";
 import { notFound } from "next/navigation";
 
+type Params = { slug: string };
+
 export function generateStaticParams() {
   return posts.map((post) => ({
     slug: post.slug,
   }));
 }
 
-export function generateMetadata({
+export async function generateMetadata({
   params,
 }: {
-  params: { slug: string };
-}): Metadata {
-  const post = posts.find((p) => p.slug === params.slug);
+  params: Promise<Params>;
+}): Promise<Metadata> {
+  const { slug } = await params;
+  const post = posts.find((p) => p.slug === slug);
   if (!post) return { title: "Artigo não encontrado" };
 
   return {
@@ -23,8 +26,13 @@ export function generateMetadata({
   };
 }
 
-export default function PostPage({ params }: { params: { slug: string } }) {
-  const post = posts.find((p) => p.slug === params.slug);
+export default async function PostPage({
+  params,
+}: {
+  params: Promise<Params>;
+}) {
+  const { slug } = await params;
+  const post = posts.find((p) => p.slug === slug);
   if (!post) notFound();
 
   return <PostContent post={post} />;

@@ -13,9 +13,9 @@ export interface TagProps {
 }
 
 const variantClasses: Record<Variant, string> = {
-  terracotta: "bg-primaria/10 text-primaria",
-  sage: "bg-secundaria-container text-on-secundaria-container",
-  taupe: "bg-terciaria-container text-on-terciaria-container",
+  terracotta: "bg-primary/10 text-primary",
+  sage: "bg-secondary-container text-on-secondary-container",
+  taupe: "bg-tertiary-container text-on-tertiary-container",
   neutral: "bg-surface-container-high text-on-surface-variant",
 };
 

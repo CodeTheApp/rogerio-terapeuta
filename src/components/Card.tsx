@@ -95,12 +95,12 @@ export function ArticleCard({
         .filter(Boolean)
         .join(" ")}
     >
-      <div className="aspect-[380/220] bg-terciaria-container overflow-hidden">
+      <div className="aspect-[380/220] bg-tertiary-container overflow-hidden">
         {image}
       </div>
       <div className="flex flex-col gap-3 px-8 py-[1.75rem]">
         {metadata && (
-          <p className="font-sans font-medium text-xs tracking-[0.15em] text-primaria-container">
+          <p className="font-sans font-medium text-xs tracking-[0.15em] text-primary-container">
             {metadata}
           </p>
         )}
@@ -176,7 +176,7 @@ export function TestimonialCard({
     >
       <span
         aria-hidden="true"
-        className="font-serif text-7xl leading-[0.6] text-primaria-container"
+        className="font-serif text-7xl leading-[0.6] text-primary-container"
       >
         &ldquo;
       </span>
@@ -244,24 +244,24 @@ export function NewsletterCard({
   return (
     <section
       className={[
-        "rounded-xl bg-secundaria-container px-12 py-12 flex flex-col gap-6",
+        "rounded-xl bg-secondary-container px-12 py-12 flex flex-col gap-6",
         className,
       ]
         .filter(Boolean)
         .join(" ")}
     >
       {label && (
-        <p className="font-sans font-medium text-xs tracking-[0.15em] text-on-secundaria-container">
+        <p className="font-sans font-medium text-xs tracking-[0.15em] text-on-secondary-container">
           {label}
         </p>
       )}
 
-      <h3 className="font-serif text-title-lg text-on-secundaria-container tracking-[-0.015em] leading-[1.25]">
+      <h3 className="font-serif text-title-lg text-on-secondary-container tracking-[-0.015em] leading-[1.25]">
         {title}
       </h3>
 
       {description && (
-        <p className="font-sans text-[0.9375rem] leading-[1.6] text-on-secundaria-container">
+        <p className="font-sans text-[0.9375rem] leading-[1.6] text-on-secondary-container">
           {description}
         </p>
       )}
@@ -274,12 +274,12 @@ export function NewsletterCard({
           onChange={(e) => setEmail(e.target.value)}
           placeholder={placeholder}
           disabled={submitting}
-          className="flex-1 h-[3.25rem] px-5 rounded-xl bg-surface-container-lowest font-sans text-[0.9375rem] text-on-surface placeholder:text-outline outline-none focus:ring-2 focus:ring-primaria"
+          className="flex-1 h-[3.25rem] px-5 rounded-xl bg-surface-container-lowest font-sans text-[0.9375rem] text-on-surface placeholder:text-outline outline-none focus:ring-2 focus:ring-primary"
         />
         <button
           type="submit"
           disabled={submitting}
-          className="h-[3.25rem] px-6 rounded-xl bg-primaria text-on-primaria font-sans font-semibold text-[0.9375rem] hover:bg-primaria-container transition-colors disabled:opacity-60 disabled:cursor-not-allowed cursor-pointer"
+          className="h-[3.25rem] px-6 rounded-xl bg-primary text-on-primary font-sans font-semibold text-[0.9375rem] hover:bg-primary-container transition-colors disabled:opacity-60 disabled:cursor-not-allowed cursor-pointer"
         >
           {submitting ? "..." : buttonLabel}
         </button>

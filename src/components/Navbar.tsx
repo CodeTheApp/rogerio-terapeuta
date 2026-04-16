@@ -1,10 +1,10 @@
 "use client";
 
-import { motion } from "motion/react";
+import { motion, AnimatePresence } from "motion/react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useEffect, useState } from "react";
-import { Calendar } from "lucide-react";
+import { Calendar, Menu, X } from "lucide-react";
 import { Button } from "./Button";
 
 const sections = [
@@ -19,6 +19,7 @@ export default function Navbar() {
   const isHome = pathname === "/";
   const isBlog = pathname.startsWith("/blog");
   const [activeSection, setActiveSection] = useState("inicio");
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
   useEffect(() => {
     if (!isHome) return;
@@ -62,7 +63,23 @@ export default function Navbar() {
     };
   }, [isHome]);
 
+  useEffect(() => {
+    setIsMobileMenuOpen(false);
+  }, [pathname]);
+
+  useEffect(() => {
+    if (isMobileMenuOpen) {
+      document.body.style.overflow = "hidden";
+    } else {
+      document.body.style.overflow = "";
+    }
+    return () => {
+      document.body.style.overflow = "";
+    };
+  }, [isMobileMenuOpen]);
+
   const scrollToSection = (id: string) => {
+    setIsMobileMenuOpen(false);
     if (id === "inicio") {
       window.scrollTo({ top: 0, behavior: "smooth" });
       return;
@@ -127,10 +144,84 @@ export default function Navbar() {
           </Link>
         </div>
 
-        <Button variant="primary" size="sm" iconLeft={<Calendar />}>
-          Agendar Consulta
-        </Button>
+        <div className="flex items-center gap-2">
+          <div className="hidden md:block">
+            <Button variant="primary" size="sm" iconLeft={<Calendar />}>
+              Agendar Consulta
+            </Button>
+          </div>
+          <button
+            type="button"
+            aria-label={isMobileMenuOpen ? "Fechar menu" : "Abrir menu"}
+            aria-expanded={isMobileMenuOpen}
+            aria-controls="mobile-menu"
+            onClick={() => setIsMobileMenuOpen((prev) => !prev)}
+            className="md:hidden p-2 text-on-surface hover:text-primary transition-colors rounded-lg cursor-pointer focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary"
+          >
+            {isMobileMenuOpen ? (
+              <X className="w-6 h-6" />
+            ) : (
+              <Menu className="w-6 h-6" />
+            )}
+          </button>
+        </div>
       </div>
+
+      <AnimatePresence>
+        {isMobileMenuOpen && (
+          <motion.div
+            id="mobile-menu"
+            initial={{ opacity: 0, y: -10 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: -10 }}
+            transition={{ duration: 0.2, ease: "easeOut" }}
+            className="md:hidden glass border-t border-outline-variant/40"
+          >
+            <div className="flex flex-col items-start px-6 py-8 gap-6 font-serif text-lg">
+              {isHome ? (
+                sections.map((s) => (
+                  <button
+                    key={s.id}
+                    onClick={() => scrollToSection(s.id)}
+                    className={`text-left ${getLinkClass(s.id)}`}
+                  >
+                    {s.label}
+                  </button>
+                ))
+              ) : (
+                <Link
+                  href="/"
+                  onClick={() => setIsMobileMenuOpen(false)}
+                  className="text-on-surface-variant hover:text-primary transition-colors"
+                >
+                  Início
+                </Link>
+              )}
+              <Link
+                href="/blog"
+                onClick={() => setIsMobileMenuOpen(false)}
+                className={
+                  isBlog || (isHome && activeSection === "blog")
+                    ? "text-primary font-semibold border-b-2 border-primary pb-1"
+                    : "text-on-surface-variant hover:text-primary transition-colors"
+                }
+              >
+                Blog
+              </Link>
+              <div className="pt-2">
+                <Button
+                  variant="primary"
+                  size="md"
+                  iconLeft={<Calendar />}
+                  onClick={() => setIsMobileMenuOpen(false)}
+                >
+                  Agendar Consulta
+                </Button>
+              </div>
+            </div>
+          </motion.div>
+        )}
+      </AnimatePresence>
     </motion.nav>
   );
 }

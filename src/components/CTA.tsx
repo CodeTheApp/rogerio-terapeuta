@@ -29,7 +29,7 @@ export default function CTA() {
           </div>
           <p className='flex justify-center items-center gap-2 mt-10 font-medium text-on-surface-variant text-sm'>
             <ShieldCheck className='w-5 h-5 text-secondary' />
-            Atendimento online e presencial no Brasil e Portugal
+            Online no Brasil e Portugal · Presencial em Pombal, Leiria
           </p>
         </motion.div>
       </div>

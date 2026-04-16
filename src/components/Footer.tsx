@@ -1,4 +1,5 @@
-import { MapPin, Share2 } from 'lucide-react';
+import { MapPin } from 'lucide-react';
+import { ShareButton } from './ShareButton';
 
 export default function Footer() {
   return (
@@ -22,18 +23,17 @@ export default function Footer() {
             <a href="#" className="hover:text-primary transition-colors">Contato</a>
           </div> */}
 
-          <div className='flex gap-6'>
+          <div className='flex items-center gap-4'>
+            <ShareButton />
             <a
-              href='#'
-              className='bg-primary/5 hover:opacity-70 p-2 rounded-full text-primary transition-opacity'
+              href='https://maps.google.com/?q=Pombal,+Leiria,+Portugal'
+              target='_blank'
+              rel='noopener noreferrer'
+              aria-label='Ver Pombal, Leiria, Portugal no Google Maps'
+              className='flex items-center gap-2 bg-primary/5 hover:bg-primary/10 px-4 py-2 rounded-full text-primary text-sm font-medium transition-colors'
             >
-              <Share2 className='w-6 h-6' />
-            </a>
-            <a
-              href='#'
-              className='bg-primary/5 hover:opacity-70 p-2 rounded-full text-primary transition-opacity'
-            >
-              <MapPin className='w-6 h-6' />
+              <MapPin className='w-5 h-5' />
+              <span>Pombal, Leiria · Portugal</span>
             </a>
           </div>
         </div>

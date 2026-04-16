@@ -19,7 +19,7 @@ export default function About() {
             className="rounded-4xl w-full aspect-square object-cover grayscale-[20%] hover:grayscale-0 transition-all duration-700"
             referrerPolicy="no-referrer"
           />
-          <div className="absolute -top-6 -right-6 bg-surface-container-lowest p-8 rounded-2xl shadow-xl hidden md:block border border-primary/5">
+          <div className="absolute -top-6 -right-6 bg-surface-container-lowest p-8 rounded-2xl shadow-xl hidden md:block border border-outline-variant">
             <p className="font-serif text-3xl text-primary font-bold">15+</p>
             <p className="text-xs uppercase tracking-ultra-wide text-on-surface-variant font-semibold">Anos de Prática</p>
           </div>

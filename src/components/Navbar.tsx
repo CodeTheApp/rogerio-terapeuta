@@ -84,7 +84,7 @@ export default function Navbar() {
     <motion.nav
       initial={{ y: -100 }}
       animate={{ y: 0 }}
-      className="fixed top-0 w-full z-50 glass transition-all duration-300 border-b border-primary/5"
+      className="fixed top-0 w-full z-50 glass transition-all duration-300 border-b border-outline-variant/40"
     >
       <div className="flex justify-between items-center w-full px-6 md:px-16 py-6 max-w-screen-2xl mx-auto">
         <Link

@@ -2,7 +2,7 @@ import { Share2, MapPin } from "lucide-react";
 
 export default function Footer() {
   return (
-    <footer className="w-full border-t border-primary/10 bg-surface-container-low">
+    <footer className="w-full border-t border-outline-variant/40 bg-surface-container-low">
       <div className="max-w-screen-2xl mx-auto px-6 md:px-16 py-16">
         <div className="flex flex-col md:flex-row justify-between items-center gap-12">
           <div className="flex flex-col items-center md:items-start text-center md:text-left">

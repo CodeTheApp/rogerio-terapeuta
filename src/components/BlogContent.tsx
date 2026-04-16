@@ -108,13 +108,13 @@ export default function BlogContent() {
           </div>
 
           <div className="flex justify-center items-center gap-4 mt-20">
-            <button className="flex justify-center items-center hover:bg-secondary-container border hover:border-transparent rounded-full border-outline-variant/30 w-12 h-12 text-secondary transition-all">
+            <button className="flex justify-center items-center hover:bg-secondary-container border hover:border-transparent rounded-full border-outline-variant w-12 h-12 text-secondary transition-all">
               <ChevronLeft size={20} />
             </button>
             <span className="font-medium text-on-surface-variant">
               Página 1 de 1
             </span>
-            <button className="flex justify-center items-center hover:bg-secondary-container border hover:border-transparent rounded-full border-outline-variant/30 w-12 h-12 text-secondary transition-all">
+            <button className="flex justify-center items-center hover:bg-secondary-container border hover:border-transparent rounded-full border-outline-variant w-12 h-12 text-secondary transition-all">
               <ChevronRight size={20} />
             </button>
           </div>
@@ -127,7 +127,7 @@ export default function BlogContent() {
               <input
                 type="text"
                 placeholder="Busque um tema..."
-                className="bg-surface-container-lowest px-4 py-3 border-none rounded-xl focus:ring-2 focus:ring-primary/20 w-full text-on-surface placeholder:text-secondary/50"
+                className="bg-surface-container-lowest px-4 py-3 border-none rounded-xl focus:ring-2 focus:ring-primary w-full text-on-surface placeholder:text-secondary/50"
               />
               <Search className="top-1/2 right-4 absolute text-secondary/50 -translate-y-1/2" size={20} />
             </div>

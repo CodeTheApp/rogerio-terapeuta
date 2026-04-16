@@ -91,7 +91,7 @@ export default function PostContent({ post }: { post: Post }) {
             }}
           />
 
-          <div className="flex flex-wrap gap-3 mt-16 pt-12 border-t border-outline-variant/20">
+          <div className="flex flex-wrap gap-3 mt-16 pt-12 border-t border-outline-variant">
             {["Auto-conhecimento", "Psicologia", "Mindfulness", "Bem-estar"].map(
               (tag) => (
                 <span
@@ -104,7 +104,7 @@ export default function PostContent({ post }: { post: Post }) {
             )}
           </div>
 
-          <div className="mt-12 pt-12 border-t border-primary/10">
+          <div className="mt-12 pt-12 border-t border-outline-variant">
             <div className="flex flex-col md:flex-row justify-between items-center gap-8">
               <div className="flex items-center gap-4">
                 <div className="w-14 h-14 rounded-full overflow-hidden bg-surface-container-high">
@@ -129,7 +129,7 @@ export default function PostContent({ post }: { post: Post }) {
         </motion.article>
 
         <aside className="space-y-12 lg:col-span-4">
-          <div className="bg-surface-container-low p-8 border rounded-[2.5rem] border-outline-variant/10">
+          <div className="bg-surface-container-low p-8 border rounded-[2.5rem] border-outline-variant">
             <h3 className="mb-4 font-headline text-on-surface text-2xl">Cartas Semanais</h3>
             <p className="mb-6 text-on-surface-variant text-sm leading-relaxed">
               Receba reflexões exclusivas sobre psicologia e bem-estar diretamente em sua caixa de entrada.

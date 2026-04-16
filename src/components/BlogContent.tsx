@@ -1,4 +1,6 @@
-import { Link } from "react-router-dom";
+"use client";
+
+import Link from "next/link";
 import {
   ArrowRight,
   ArrowUpRight,
@@ -6,14 +8,11 @@ import {
   ChevronRight,
   Quote,
   Search,
-  Share2,
-  Heart,
-  Mail,
 } from "lucide-react";
 import { motion } from "motion/react";
 import { posts } from "../data/posts";
 
-export default function Blog() {
+export default function BlogContent() {
   const featuredPost = posts.find((p) => p.featured);
   const regularPosts = posts.filter((p) => !p.featured);
 
@@ -29,15 +28,14 @@ export default function Blog() {
           Escritas da Alma
         </h1>
         <p className="max-w-2xl font-light text-on-surface-variant text-lg md:text-xl">
-          Reflexoes sobre a existencia, o sentir e o processo de tornar-se quem
-          se e.
+          Reflexões sobre a existência, o sentir e o processo de tornar-se quem
+          se é.
         </p>
       </header>
 
-      {/* Featured Post */}
       {featuredPost && (
         <section className="mb-24">
-          <Link to={`/blog/${featuredPost.slug}`} className="group block">
+          <Link href={`/blog/${featuredPost.slug}`} className="group block">
             <div className="relative grid grid-cols-1 lg:grid-cols-12 bg-surface-container-low rounded-[2rem] min-h-[500px] overflow-hidden">
               <div className="relative lg:col-span-7 h-[300px] lg:h-full overflow-hidden">
                 <img
@@ -46,7 +44,6 @@ export default function Blog() {
                   className="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
                   referrerPolicy="no-referrer"
                 />
-                <div className="absolute inset-0 bg-gradient-to-r from-transparent to-surface-container-low/20" />
               </div>
               <div className="flex flex-col justify-center lg:col-span-5 p-8 md:p-12">
                 <span className="block mb-4 font-bold text-primary text-xs uppercase tracking-widest">
@@ -59,7 +56,7 @@ export default function Blog() {
                   {featuredPost.excerpt}
                 </p>
                 <span className="inline-flex items-center gap-2 bg-primary hover:opacity-90 px-8 py-3 rounded-xl w-fit text-on-primary transition-all">
-                  Ler Reflexao Completa
+                  Ler Reflexão Completa
                   <ArrowRight size={18} />
                 </span>
               </div>
@@ -68,13 +65,12 @@ export default function Blog() {
         </section>
       )}
 
-      {/* Content Grid */}
       <div className="gap-16 grid grid-cols-1 lg:grid-cols-12">
         <div className="lg:col-span-8">
           <div className="gap-12 grid grid-cols-1 md:grid-cols-2">
             {regularPosts.map((post) => (
               <article key={post.id} className="group flex flex-col">
-                <Link to={`/blog/${post.slug}`} className="block">
+                <Link href={`/blog/${post.slug}`} className="block">
                   <div className="bg-surface-container-low mb-6 rounded-[2rem] aspect-[4/3] overflow-hidden">
                     <img
                       src={post.image}
@@ -92,7 +88,7 @@ export default function Blog() {
                     {post.date}
                   </span>
                 </div>
-                <Link to={`/blog/${post.slug}`}>
+                <Link href={`/blog/${post.slug}`}>
                   <h3 className="mb-3 font-bold text-on-surface hover:text-primary text-2xl leading-snug transition-colors">
                     {post.title}
                   </h3>
@@ -101,7 +97,7 @@ export default function Blog() {
                   {post.excerpt}
                 </p>
                 <Link
-                  to={`/blog/${post.slug}`}
+                  href={`/blog/${post.slug}`}
                   className="inline-flex items-center gap-1 w-fit font-bold text-primary text-sm hover:underline"
                 >
                   Continuar Lendo
@@ -111,13 +107,12 @@ export default function Blog() {
             ))}
           </div>
 
-          {/* Pagination */}
           <div className="flex justify-center items-center gap-4 mt-20">
             <button className="flex justify-center items-center hover:bg-secondary-container border hover:border-transparent rounded-full border-outline-variant/30 w-12 h-12 text-secondary transition-all">
               <ChevronLeft size={20} />
             </button>
             <span className="font-medium text-on-surface-variant">
-              Pagina 1 de 1
+              Página 1 de 1
             </span>
             <button className="flex justify-center items-center hover:bg-secondary-container border hover:border-transparent rounded-full border-outline-variant/30 w-12 h-12 text-secondary transition-all">
               <ChevronRight size={20} />
@@ -125,46 +120,33 @@ export default function Blog() {
           </div>
         </div>
 
-        {/* Sidebar */}
         <aside className="space-y-12 lg:col-span-4">
-          {/* Search Box */}
           <div className="bg-surface-container-low p-8 rounded-[2rem]">
-            <h4 className="mb-6 font-headline text-on-surface text-xl">
-              Pesquisar
-            </h4>
+            <h4 className="mb-6 font-headline text-on-surface text-xl">Pesquisar</h4>
             <div className="relative">
               <input
                 type="text"
                 placeholder="Busque um tema..."
                 className="bg-surface-container-lowest px-4 py-3 border-none rounded-xl focus:ring-2 focus:ring-primary/20 w-full text-on-surface placeholder:text-secondary/50"
               />
-              <Search
-                className="top-1/2 right-4 absolute text-secondary/50 -translate-y-1/2"
-                size={20}
-              />
+              <Search className="top-1/2 right-4 absolute text-secondary/50 -translate-y-1/2" size={20} />
             </div>
           </div>
 
-          {/* Categories */}
           <div className="p-8">
-            <h4 className="mb-6 font-headline text-on-surface text-xl">
-              Categorias
-            </h4>
+            <h4 className="mb-6 font-headline text-on-surface text-xl">Categorias</h4>
             <ul className="space-y-4">
               {[
                 { name: "Ansiedade", count: 12 },
                 { name: "Relacionamentos", count: 8 },
                 { name: "Autoconhecimento", count: 15 },
-                { name: "Saude Mental", count: 22 },
+                { name: "Saúde Mental", count: 22 },
                 { name: "Luto e Perda", count: 5 },
               ].map((cat) => (
                 <li key={cat.name}>
-                  <a
-                    href="#"
-                    className="group flex justify-between items-center text-secondary hover:text-primary transition-all"
-                  >
+                  <a href="#" className="group flex justify-between items-center text-secondary hover:text-primary transition-all">
                     <span className="font-medium">{cat.name}</span>
-                    <span className="bg-surface-container-low group-hover:bg-primary-container px-2 py-1 rounded-full group-hover:text-on-primary text-xs">
+                    <span className="bg-surface-container-low group-hover:bg-primary-container px-2 py-1 rounded-full text-xs">
                       {cat.count < 10 ? `0${cat.count}` : cat.count}
                     </span>
                   </a>
@@ -173,21 +155,15 @@ export default function Blog() {
             </ul>
           </div>
 
-          {/* Newsletter / Reflection Quote */}
           <div className="relative bg-tertiary-container p-8 rounded-[2rem] overflow-hidden text-on-tertiary-container">
             <div className="z-10 relative">
               <Quote size={40} className="opacity-50 mb-4" />
               <p className="mb-8 font-headline text-2xl italic leading-relaxed">
-                "Onde nao se pode falar, deve-se calar. Mas onde a alma grita, a
-                escuta cura."
+                "Onde não se pode falar, deve-se calar. Mas onde a alma grita, a escuta cura."
               </p>
               <div className="bg-on-tertiary-container/30 mb-8 w-16 h-px" />
-              <h5 className="mb-2 font-bold text-sm uppercase tracking-widest">
-                Escritas da Alma
-              </h5>
-              <p className="opacity-80 mb-6 text-sm">
-                Receba reflexoes exclusivas diretamente em seu e-mail.
-              </p>
+              <h5 className="mb-2 font-bold text-sm uppercase tracking-widest">Escritas da Alma</h5>
+              <p className="opacity-80 mb-6 text-sm">Receba reflexões exclusivas diretamente em seu e-mail.</p>
               <form className="space-y-3" onSubmit={(e) => e.preventDefault()}>
                 <input
                   type="email"

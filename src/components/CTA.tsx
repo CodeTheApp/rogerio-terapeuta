@@ -1,3 +1,5 @@
+"use client";
+
 import { motion } from "motion/react";
 import { ShieldCheck } from "lucide-react";
 

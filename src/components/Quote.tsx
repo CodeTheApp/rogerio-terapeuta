@@ -1,3 +1,5 @@
+"use client";
+
 import { motion } from "motion/react";
 import { Quote as QuoteIcon } from "lucide-react";
 

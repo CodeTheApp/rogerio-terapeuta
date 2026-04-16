@@ -9,26 +9,29 @@
   --color-primary: #84432e;
   --color-primary-container: #a25a44;
   --color-secondary: #57624d;
+  --color-secondary-container: #dbe7cc;
   --color-tertiary: #5f5443;
   --color-tertiary-container: #786c5a;
-  
+
   --color-surface: #fdf9f3;
   --color-surface-container-low: #f7f3ed;
   --color-surface-container-lowest: #ffffff;
   --color-surface-container-high: #ebe8e2;
   --color-surface-container-highest: #e6e2dc;
-  
+
   --color-on-surface: #1c1c18;
   --color-on-surface-variant: #53433e;
   --color-on-primary: #ffffff;
+  --color-on-secondary-container: #5d6853;
   --color-on-tertiary-container: #ffefdb;
+  --color-outline-variant: #d8c2bb;
 }
 
 @layer base {
   body {
     @apply font-body bg-surface text-on-surface antialiased;
   }
-  
+
   h1, h2, h3, h4, .serif {
     @apply font-headline;
   }
@@ -39,6 +42,6 @@
   backdrop-filter: blur(12px);
 }
 
-.scroll-smooth {
+html {
   scroll-behavior: smooth;
 }

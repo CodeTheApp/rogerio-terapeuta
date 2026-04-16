@@ -3,30 +3,27 @@
  * SPDX-License-Identifier: Apache-2.0
  */
 
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Navbar from "./components/Navbar";
-import Hero from "./components/Hero";
-import About from "./components/About";
-import Specialties from "./components/Specialties";
-import Quote from "./components/Quote";
-import Testimonials from "./components/Testimonials";
-import Blog from "./components/Blog";
-import CTA from "./components/CTA";
 import Footer from "./components/Footer";
+import Home from "./pages/Home";
+import Blog from "./pages/Blog";
+import Post from "./pages/Post";
 
 export default function App() {
   return (
-    <div className="min-h-screen scroll-smooth">
-      <Navbar />
-      <main>
-        <Hero />
-        <About />
-        <Specialties />
-        <Quote />
-        <Testimonials />
-        <Blog />
-        <CTA />
-      </main>
-      <Footer />
-    </div>
+    <Router>
+      <div className="min-h-screen scroll-smooth flex flex-col">
+        <Navbar />
+        <main className="flex-grow">
+          <Routes>
+            <Route path="/" element={<Home />} />
+            <Route path="/blog" element={<Blog />} />
+            <Route path="/blog/:slug" element={<Post />} />
+          </Routes>
+        </main>
+        <Footer />
+      </div>
+    </Router>
   );
 }

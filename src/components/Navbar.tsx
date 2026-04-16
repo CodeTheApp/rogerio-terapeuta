@@ -4,6 +4,8 @@ import { motion } from "motion/react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useEffect, useState } from "react";
+import { Calendar } from "lucide-react";
+import { Button } from "./Button";
 
 const sections = [
   { label: "Início", id: "inicio" },
@@ -74,25 +76,25 @@ export default function Navbar() {
   const getLinkClass = (id: string) => {
     const isActive = isHome && activeSection === id;
     return isActive
-      ? "text-primary font-semibold border-b-2 border-primary pb-1"
-      : "text-on-surface-variant opacity-80 hover:opacity-100 hover:text-primary transition-colors duration-200";
+      ? "text-primaria font-semibold border-b-2 border-primaria pb-1"
+      : "text-on-surface-variant opacity-80 hover:opacity-100 hover:text-primaria transition-colors duration-200";
   };
 
   return (
     <motion.nav
       initial={{ y: -100 }}
       animate={{ y: 0 }}
-      className="fixed top-0 w-full z-50 glass-nav transition-all duration-300 border-b border-primary/5"
+      className="fixed top-0 w-full z-50 glass transition-all duration-300 border-b border-primaria/5"
     >
       <div className="flex justify-between items-center w-full px-6 md:px-16 py-6 max-w-screen-2xl mx-auto">
         <Link
           href="/"
-          className="text-2xl font-headline text-on-surface tracking-tighter font-semibold"
+          className="text-2xl font-serif text-on-surface tracking-tighter font-semibold"
         >
           Rogério Viana
         </Link>
 
-        <div className="hidden md:flex items-center space-x-8 font-headline font-medium tracking-tight">
+        <div className="hidden md:flex items-center space-x-8 font-serif font-medium tracking-tight">
           {isHome ? (
             <>
               {sections.map((s) => (
@@ -108,7 +110,7 @@ export default function Navbar() {
           ) : (
             <Link
               href="/"
-              className="text-on-surface-variant opacity-80 hover:opacity-100 hover:text-primary transition-colors duration-200"
+              className="text-on-surface-variant opacity-80 hover:opacity-100 hover:text-primaria transition-colors duration-200"
             >
               Início
             </Link>
@@ -116,20 +118,18 @@ export default function Navbar() {
           <Link
             href="/blog"
             className={
-              isBlog
-                ? "text-primary font-semibold border-b-2 border-primary pb-1"
-                : isHome && activeSection === "blog"
-                  ? "text-primary font-semibold border-b-2 border-primary pb-1"
-                  : "text-on-surface-variant opacity-80 hover:opacity-100 hover:text-primary transition-colors duration-200"
+              isBlog || (isHome && activeSection === "blog")
+                ? "text-primaria font-semibold border-b-2 border-primaria pb-1"
+                : "text-on-surface-variant opacity-80 hover:opacity-100 hover:text-primaria transition-colors duration-200"
             }
           >
             Blog
           </Link>
         </div>
 
-        <button className="bg-primary text-on-primary px-6 py-2.5 rounded-xl font-medium transition-all hover:opacity-90 active:scale-95">
+        <Button variant="primary" size="sm" iconLeft={<Calendar />}>
           Agendar Consulta
-        </button>
+        </Button>
       </div>
     </motion.nav>
   );

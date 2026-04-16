@@ -120,6 +120,21 @@
   --text-display-lg--line-height: 1.1;
   --text-display-lg--letter-spacing: -0.02em;
 
+  /* ── RAIOS extras ── */
+  --radius-3xl: 2rem;
+  --radius-4xl: 2.5rem;
+  --radius-5xl: 3rem;
+
+  /* ── TRACKING extras ── */
+  --tracking-editorial: -0.02em;
+  --tracking-titulo: -0.015em;
+  --tracking-rotulo: 0.15em;
+  --tracking-ultra-wide: 0.2em;
+
+  /* ── TEXT extras ── */
+  --text-body-between: 0.9375rem;
+  --text-body-between--line-height: 1.6;
+
   /* ── SOMBRAS DS ── */
   --shadow-ambient: 0 20px 40px rgba(83, 67, 62, 0.06);
   --shadow-subtle: 0 8px 24px rgba(83, 67, 62, 0.04);

@@ -145,6 +145,6 @@
   background-image: linear-gradient(135deg, #84432e 0%, #a25a44 100%);
 }
 
-html {
+html:not([data-scroll-locked]) {
   scroll-behavior: smooth;
 }

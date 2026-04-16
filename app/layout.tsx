@@ -30,8 +30,8 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="pt-BR" className={`${notoSerif.variable} ${manrope.variable}`}>
-      <body>
+    <html lang="pt-BR" className={`${notoSerif.variable} ${manrope.variable}`} suppressHydrationWarning>
+      <body suppressHydrationWarning>
         <div className="min-h-screen flex flex-col">
           <Navbar />
           <main className="flex-grow">{children}</main>

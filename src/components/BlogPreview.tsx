@@ -15,7 +15,7 @@ export default function BlogPreview() {
       <div className='mx-auto max-w-7xl'>
         <div className='flex md:flex-row flex-col justify-between items-end gap-6 mb-16'>
           <div className='md:text-left text-center'>
-            <h2 className='mb-4 font-serif font-bold text-on-surface text-5xl md:text-7xl tracking-tight'>
+            <h2 className='mb-4 font-serif font-bold text-on-surface text-4xl md:text-7xl tracking-tight'>
               Escritas da Alma
             </h2>
             <p className='max-w-2xl font-light text-on-surface-variant text-lg'>
@@ -41,7 +41,7 @@ export default function BlogPreview() {
               className='group flex flex-col'
             >
               <Link href={`/blog/${post.slug}`} className='block'>
-                <div className='bg-surface-container-high shadow-lg mb-8 rounded-3xl aspect-[4/3] overflow-hidden'>
+                <div className='bg-surface-container-high shadow-lg mb-8 rounded-3xl aspect-4/3 overflow-hidden'>
                   <img
                     src={post.image}
                     alt={post.title}

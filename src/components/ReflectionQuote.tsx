@@ -1,4 +1,4 @@
-"use client";
+'use client';
 
 /**
  * Terra e Alma — Reflection Quote
@@ -35,9 +35,9 @@
  *   />
  */
 
-import type { ReactNode } from "react";
+import type { ReactNode } from 'react';
 
-type Variant = "default" | "subtle";
+type Variant = 'default' | 'subtle';
 
 export interface ReflectionQuoteProps {
   quote: string | ReactNode;
@@ -59,46 +59,46 @@ const variantStyles: Record<
   }
 > = {
   default: {
-    container: "bg-gradient-hero p-[6rem]",
-    label: "text-on-primary-container",
-    quote: "text-on-primary",
-    quoteSize: "text-[3rem] leading-[1.2] tracking-[-0.015em]",
-    divider: "bg-on-primary-container opacity-60",
-    author: "text-on-primary-container",
+    container: 'bg-gradient-hero md:p-20 p-12',
+    label: 'text-on-primary-container',
+    quote: 'text-on-primary',
+    quoteSize: 'text-4xl md:text-[3rem] leading-[1.2] tracking-[-0.015em]',
+    divider: 'bg-on-primary-container opacity-60',
+    author: 'text-on-primary-container',
   },
   subtle: {
-    container: "bg-surface-container-low px-20 py-[4.5rem]",
-    label: "text-primary",
-    quote: "text-on-surface",
-    quoteSize: "text-headline-md",
-    divider: "bg-primary opacity-40",
-    author: "text-on-surface-variant",
+    container: 'bg-surface-container-low px-12 md:px-20 py-[4.5rem]',
+    label: 'text-primary',
+    quote: 'text-on-surface',
+    quoteSize: 'text-headline-md',
+    divider: 'bg-primary opacity-40',
+    author: 'text-on-surface-variant',
   },
 };
 
 export function ReflectionQuote({
   quote,
   author,
-  label = "ESCRITAS DA ALMA",
-  variant = "default",
-  className = "",
+  label = 'ESCRITAS DA ALMA',
+  variant = 'default',
+  className = '',
 }: ReflectionQuoteProps) {
   const s = variantStyles[variant];
 
   return (
     <figure
       className={[
-        "rounded-2xl flex flex-col items-center justify-center text-center",
-        variant === "default" ? "gap-8" : "gap-6",
+        'rounded-2xl flex flex-col items-center justify-center text-center',
+        variant === 'default' ? 'gap-8' : 'gap-6',
         s.container,
         className,
       ]
         .filter(Boolean)
-        .join(" ")}
+        .join(' ')}
     >
       {label && (
         <p
-          className={`font-sans font-medium text-xs tracking-[0.15em] ${s.label}`}
+          className={`font-sans font-medium text-xs tracking-label ${s.label}`}
         >
           {label}
         </p>
@@ -106,7 +106,7 @@ export function ReflectionQuote({
 
       <blockquote>
         <p
-          className={`font-serif tracking-[-0.015em] ${s.quoteSize} ${s.quote} max-w-[20ch]`}
+          className={`font-serif -tracking-label ${s.quoteSize} ${s.quote} max-w-[20ch]`}
         >
           {quote}
         </p>
@@ -116,7 +116,7 @@ export function ReflectionQuote({
 
       {author && (
         <figcaption
-          className={`font-sans font-medium text-xs tracking-[0.15em] uppercase ${s.author}`}
+          className={`font-sans font-medium text-xs tracking-label uppercase ${s.author}`}
         >
           {author}
         </figcaption>

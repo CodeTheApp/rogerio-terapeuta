@@ -1,27 +1,27 @@
-import type { Metadata } from "next";
-import { Noto_Serif, Manrope } from "next/font/google";
-import Navbar from "@/src/components/Navbar";
-import Footer from "@/src/components/Footer";
-import "./globals.css";
+import Footer from '@/src/components/Footer';
+import Navbar from '@/src/components/Navbar';
+import type { Metadata } from 'next';
+import { Manrope, Noto_Serif } from 'next/font/google';
+import './globals.css';
 
 const notoSerif = Noto_Serif({
-  subsets: ["latin"],
-  weight: ["400", "500", "600", "700"],
-  variable: "--font-noto-serif",
-  display: "swap",
+  subsets: ['latin'],
+  weight: ['400', '500', '600', '700'],
+  variable: '--font-noto-serif',
+  display: 'swap',
 });
 
 const manrope = Manrope({
-  subsets: ["latin"],
-  weight: ["300", "400", "500", "600", "700", "800"],
-  variable: "--font-manrope",
-  display: "swap",
+  subsets: ['latin'],
+  weight: ['300', '400', '500', '600', '700', '800'],
+  variable: '--font-manrope',
+  display: 'swap',
 });
 
 export const metadata: Metadata = {
-  title: "Rogério Viana · Psicólogo Clínico",
+  title: 'Rogério Viana · Psicólogo Clínico',
   description:
-    "Espaço de escuta e transformação. Terapia integrativa com acolhimento e respeito.",
+    'Espaço de escuta e transformação. Terapia integrativa com acolhimento e respeito.',
 };
 
 export default function RootLayout({
@@ -30,11 +30,16 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="pt-BR" className={`${notoSerif.variable} ${manrope.variable}`} data-scroll-behavior="smooth" suppressHydrationWarning>
+    <html
+      lang='pt-BR'
+      className={`${notoSerif.variable} ${manrope.variable}`}
+      data-scroll-behavior='smooth'
+      suppressHydrationWarning
+    >
       <body suppressHydrationWarning>
-        <div className="min-h-screen flex flex-col">
+        <div className='flex flex-col min-h-screen'>
           <Navbar />
-          <main className="flex-grow">{children}</main>
+          <main className='grow'>{children}</main>
           <Footer />
         </div>
       </body>

@@ -67,7 +67,7 @@ const variantStyles: Record<
     author: "text-on-primaria-container",
   },
   subtle: {
-    container: "bg-surface-container-low px-5xl py-[4.5rem]",
+    container: "bg-surface-container-low px-20 py-[4.5rem]",
     label: "text-primaria",
     quote: "text-on-surface",
     quoteSize: "text-headline-md",
@@ -89,7 +89,7 @@ export function ReflectionQuote({
     <figure
       className={[
         "rounded-2xl flex flex-col items-center justify-center text-center",
-        variant === "default" ? "gap-xl" : "gap-lg",
+        variant === "default" ? "gap-8" : "gap-6",
         s.container,
         className,
       ]
@@ -98,7 +98,7 @@ export function ReflectionQuote({
     >
       {label && (
         <p
-          className={`font-sans font-medium text-xs tracking-rotulo ${s.label}`}
+          className={`font-sans font-medium text-xs tracking-[0.15em] ${s.label}`}
         >
           {label}
         </p>
@@ -106,7 +106,7 @@ export function ReflectionQuote({
 
       <blockquote>
         <p
-          className={`font-serif tracking-titulo ${s.quoteSize} ${s.quote} max-w-[20ch]`}
+          className={`font-serif tracking-[-0.015em] ${s.quoteSize} ${s.quote} max-w-[20ch]`}
         >
           {quote}
         </p>
@@ -116,7 +116,7 @@ export function ReflectionQuote({
 
       {author && (
         <figcaption
-          className={`font-sans font-medium text-xs tracking-rotulo uppercase ${s.author}`}
+          className={`font-sans font-medium text-xs tracking-[0.15em] uppercase ${s.author}`}
         >
           {author}
         </figcaption>

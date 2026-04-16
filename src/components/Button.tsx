@@ -44,7 +44,7 @@ export interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
 
 const baseClasses = [
   "inline-flex items-center justify-center font-sans font-semibold",
-  "rounded-md transition-colors duration-200 ease-out cursor-pointer",
+  "rounded-xl transition-colors duration-200 ease-out cursor-pointer",
   "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primaria focus-visible:ring-offset-2 focus-visible:ring-offset-surface",
   "disabled:cursor-not-allowed disabled:opacity-60",
 ].join(" ");
@@ -74,9 +74,9 @@ const variantClasses: Record<Variant, string> = {
 };
 
 const sizeClasses: Record<Size, string> = {
-  sm: "px-md py-2xs gap-1.5 text-body-sm",
-  md: "px-[1.75rem] py-xs gap-2xs text-[0.9375rem]",
-  lg: "px-xl py-sm gap-2.5 text-body-md",
+  sm: "px-5 py-2 gap-1.5 text-body-sm",
+  md: "px-[1.75rem] py-3 gap-2 text-[0.9375rem]",
+  lg: "px-8 py-4 gap-2.5 text-body-md",
 };
 
 // Icon sizes match Figma: sm=16, md=18, lg=20

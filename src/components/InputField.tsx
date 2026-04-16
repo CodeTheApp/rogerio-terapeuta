@@ -49,9 +49,9 @@ export interface InputFieldProps extends Omit<InputHTMLAttributes<HTMLInputEleme
 }
 
 const sizeClasses: Record<Size, string> = {
-  sm: "h-10 px-3.5 gap-2xs text-body-sm rounded-[0.625rem]",
-  md: "h-[3.25rem] px-md gap-2.5 text-[0.9375rem] rounded-md",
-  lg: "h-[3.75rem] px-lg gap-xs text-body-md rounded-md",
+  sm: "h-10 px-3.5 gap-2 text-body-sm rounded-[0.625rem]",
+  md: "h-[3.25rem] px-5 gap-2.5 text-[0.9375rem] rounded-xl",
+  lg: "h-[3.75rem] px-6 gap-3 text-body-md rounded-xl",
 };
 
 // Icon sizes match Figma: sm=16, md=18, lg=20
@@ -105,7 +105,7 @@ export function InputField({
   const textColor = disabled || !hasValue ? "text-outline" : "text-on-surface";
 
   return (
-    <div className="flex flex-col gap-2xs w-full">
+    <div className="flex flex-col gap-2 w-full">
       {label && (
         <label
           htmlFor={inputId}

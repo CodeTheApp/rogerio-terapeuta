@@ -98,13 +98,13 @@ export function ArticleCard({
       <div className="aspect-[380/220] bg-terciaria-container overflow-hidden">
         {image}
       </div>
-      <div className="flex flex-col gap-xs px-xl py-[1.75rem]">
+      <div className="flex flex-col gap-3 px-8 py-[1.75rem]">
         {metadata && (
-          <p className="font-sans font-medium text-xs tracking-rotulo text-primaria-container">
+          <p className="font-sans font-medium text-xs tracking-[0.15em] text-primaria-container">
             {metadata}
           </p>
         )}
-        <h3 className="font-serif text-title-md text-on-surface tracking-titulo">
+        <h3 className="font-serif text-title-md text-on-surface tracking-[-0.015em]">
           {title}
         </h3>
         {excerpt && (
@@ -113,7 +113,7 @@ export function ArticleCard({
           </p>
         )}
         {tags && tags.length > 0 && (
-          <div className="flex gap-2xs flex-wrap pt-2xs">
+          <div className="flex gap-2 flex-wrap pt-2">
             {tags.map((tag, i) => (
               <Tag key={i} variant={tag.variant ?? "sage"} size="sm">
                 {tag.label}
@@ -168,7 +168,7 @@ export function TestimonialCard({
       className={[
         cardBase,
         cardShadow,
-        "flex flex-col gap-md px-2xl pt-3xl pb-2xl",
+        "flex flex-col gap-5 px-10 pt-12 pb-10",
         className,
       ]
         .filter(Boolean)
@@ -244,19 +244,19 @@ export function NewsletterCard({
   return (
     <section
       className={[
-        "rounded-xl bg-secundaria-container px-3xl py-3xl flex flex-col gap-lg",
+        "rounded-xl bg-secundaria-container px-12 py-12 flex flex-col gap-6",
         className,
       ]
         .filter(Boolean)
         .join(" ")}
     >
       {label && (
-        <p className="font-sans font-medium text-xs tracking-rotulo text-on-secundaria-container">
+        <p className="font-sans font-medium text-xs tracking-[0.15em] text-on-secundaria-container">
           {label}
         </p>
       )}
 
-      <h3 className="font-serif text-title-lg text-on-secundaria-container tracking-titulo leading-[1.25]">
+      <h3 className="font-serif text-title-lg text-on-secundaria-container tracking-[-0.015em] leading-[1.25]">
         {title}
       </h3>
 
@@ -266,7 +266,7 @@ export function NewsletterCard({
         </p>
       )}
 
-      <form onSubmit={handleSubmit} className="flex gap-2xs pt-2xs">
+      <form onSubmit={handleSubmit} className="flex gap-2 pt-2">
         <input
           type="email"
           required
@@ -274,12 +274,12 @@ export function NewsletterCard({
           onChange={(e) => setEmail(e.target.value)}
           placeholder={placeholder}
           disabled={submitting}
-          className="flex-1 h-[3.25rem] px-md rounded-md bg-surface-container-lowest font-sans text-[0.9375rem] text-on-surface placeholder:text-outline outline-none focus:ring-2 focus:ring-primaria"
+          className="flex-1 h-[3.25rem] px-5 rounded-xl bg-surface-container-lowest font-sans text-[0.9375rem] text-on-surface placeholder:text-outline outline-none focus:ring-2 focus:ring-primaria"
         />
         <button
           type="submit"
           disabled={submitting}
-          className="h-[3.25rem] px-lg rounded-md bg-primaria text-on-primaria font-sans font-semibold text-[0.9375rem] hover:bg-primaria-container transition-colors disabled:opacity-60 disabled:cursor-not-allowed cursor-pointer"
+          className="h-[3.25rem] px-6 rounded-xl bg-primaria text-on-primaria font-sans font-semibold text-[0.9375rem] hover:bg-primaria-container transition-colors disabled:opacity-60 disabled:cursor-not-allowed cursor-pointer"
         >
           {submitting ? "..." : buttonLabel}
         </button>

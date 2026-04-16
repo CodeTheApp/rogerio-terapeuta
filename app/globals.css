@@ -5,9 +5,11 @@
  * Terra e Alma — Design System Tokens
  * Source: Figma DS "The Grounded Sanctuary"
  *
- * Font integration:
- *   layout.tsx injects --font-noto-serif and --font-manrope via next/font.
- *   The @theme below consumes those vars with robust fallbacks.
+ * @theme      → cores (substitui defaults)
+ * @theme inline → fontes, texto, sombras, gradiente (adiciona aos defaults)
+ *
+ * Spacing e radius usam a escala numérica padrão do Tailwind.
+ * Tokens nomeados do DS ficam como CSS vars para uso direto nos componentes DS.
  */
 
 @theme {
@@ -19,7 +21,7 @@
   --color-on-primaria: #ffffff;
   --color-on-primaria-container: #ffdbcf;
 
-  /* Aliases (inglês) — para componentes existentes */
+  /* Aliases inglês */
   --color-primary: #84432e;
   --color-primary-container: #a25a44;
   --color-on-primary: #ffffff;
@@ -63,41 +65,16 @@
 
   /* Semântica */
   --color-erro: #b3261e;
+}
 
-  /* ── RAIOS ── */
-  --radius-none: 0;
-  --radius-sm: 0.25rem;
-  --radius-md: 0.75rem;
-  --radius-lg: 1rem;
-  --radius-xl: 1.5rem;
-  --radius-2xl: 2rem;
-  --radius-full: 9999px;
-
-  /* ── ESPAÇAMENTOS ── */
-  --spacing-4xs: 0.125rem;
-  --spacing-3xs: 0.25rem;
-  --spacing-2xs: 0.5rem;
-  --spacing-xs: 0.75rem;
-  --spacing-sm: 1rem;
-  --spacing-md: 1.25rem;
-  --spacing-lg: 1.5rem;
-  --spacing-xl: 2rem;
-  --spacing-2xl: 2.5rem;
-  --spacing-3xl: 3rem;
-  --spacing-4xl: 4rem;
-  --spacing-5xl: 5rem;
-  --spacing-6xl: 6rem;
-  --spacing-7xl: 7.5rem;
-
-  /* ── TIPOGRAFIA ── */
+@theme inline {
+  /* ── FONTES ── */
   --font-serif: var(--font-noto-serif), Georgia, "Times New Roman", serif;
   --font-sans: var(--font-manrope), system-ui, -apple-system, sans-serif;
-
-  /* Alias para componentes existentes */
   --font-headline: var(--font-noto-serif), Georgia, "Times New Roman", serif;
   --font-body: var(--font-manrope), system-ui, -apple-system, sans-serif;
 
-  /* Tamanhos de texto */
+  /* ── TAMANHOS DE TEXTO DS ── */
   --text-label-md: 0.8125rem;
   --text-label-md--line-height: 1.2;
   --text-label-md--letter-spacing: 0.1em;
@@ -143,17 +120,48 @@
   --text-display-lg--line-height: 1.1;
   --text-display-lg--letter-spacing: -0.02em;
 
-  /* Letter-spacing extras */
-  --tracking-editorial: -0.02em;
-  --tracking-titulo: -0.015em;
-  --tracking-rotulo: 0.15em;
-
-  /* ── SOMBRAS ── */
+  /* ── SOMBRAS DS ── */
   --shadow-ambient: 0 20px 40px rgba(83, 67, 62, 0.06);
   --shadow-subtle: 0 8px 24px rgba(83, 67, 62, 0.04);
+}
 
-  /* ── GRADIENTE ── */
-  --gradient-hero: linear-gradient(135deg, #84432e 0%, #a25a44 100%);
+/*
+ * Tokens DS nomeados — CSS vars puras, não interferem no Tailwind.
+ * Componentes DS podem usar var(--ds-spacing-xl), var(--ds-radius-xl), etc.
+ */
+:root {
+  /* Spacing DS */
+  --ds-spacing-4xs: 0.125rem;
+  --ds-spacing-3xs: 0.25rem;
+  --ds-spacing-2xs: 0.5rem;
+  --ds-spacing-xs: 0.75rem;
+  --ds-spacing-sm: 1rem;
+  --ds-spacing-md: 1.25rem;
+  --ds-spacing-lg: 1.5rem;
+  --ds-spacing-xl: 2rem;
+  --ds-spacing-2xl: 2.5rem;
+  --ds-spacing-3xl: 3rem;
+  --ds-spacing-4xl: 4rem;
+  --ds-spacing-5xl: 5rem;
+  --ds-spacing-6xl: 6rem;
+  --ds-spacing-7xl: 7.5rem;
+
+  /* Radius DS */
+  --ds-radius-none: 0;
+  --ds-radius-sm: 0.25rem;
+  --ds-radius-md: 0.75rem;
+  --ds-radius-lg: 1rem;
+  --ds-radius-xl: 1.5rem;
+  --ds-radius-2xl: 2rem;
+  --ds-radius-full: 9999px;
+
+  /* Tracking DS */
+  --ds-tracking-editorial: -0.02em;
+  --ds-tracking-titulo: -0.015em;
+  --ds-tracking-rotulo: 0.15em;
+
+  /* Gradiente */
+  --ds-gradient-hero: linear-gradient(135deg, #84432e 0%, #a25a44 100%);
 }
 
 /* ── Base ── */
@@ -176,7 +184,7 @@
 }
 
 @utility bg-gradient-hero {
-  background-image: var(--gradient-hero);
+  background-image: var(--ds-gradient-hero);
 }
 
 .glass-nav {

@@ -10,7 +10,7 @@ const specialties = [
     description:
       'Desenvolvimento de estratégias para lidar com as pressões do cotidiano e reencontrar a calma interior em meio ao caos.',
     icon: Brain,
-    tags: ['Crises de Pânico', 'Burnout'],
+    tags: ['Crises de Pânico', 'Depressão', 'Ansiedade'],
     className: 'md:col-span-2 bg-surface-container-high',
     iconColor: 'text-primary',
   },
@@ -31,9 +31,9 @@ const specialties = [
     iconColor: 'text-on-secondary',
   },
   {
-    title: 'Psicoterapia e Identidade',
+    title: 'Terapia cognitiva comportamental',
     description:
-      'Abordagem sensível às questões de raça, gênero e pertencimento social na constituição do sujeito.',
+      'Trabalho focado na mudança de comportamentos e pensamentos para controle da saúde emocional.',
     icon: Sparkles,
     className: 'md:col-span-2 bg-surface-container-highest',
     iconColor: 'text-primary',
@@ -69,11 +69,11 @@ export default function Specialties() {
               <div
                 className={
                   spec.image
-                    ? 'flex flex-col md:flex-row gap-10 items-center'
+                    ? 'flex flex-col md:flex-row justify-between gap-10 items-center'
                     : ''
                 }
               >
-                <div className={spec.image ? 'md:w-1/2' : ''}>
+                <div className={spec.image ? 'md:w-2/3' : ''}>
                   <spec.icon className={`w-12 h-12 mb-8 ${spec.iconColor}`} />
                   <h3 className='mb-4 font-serif text-3xl leading-tight'>
                     {spec.title}
@@ -94,7 +94,7 @@ export default function Specialties() {
                   )}
                 </div>
                 {spec.image && (
-                  <div className='w-full md:w-1/2'>
+                  <div className='w-full md:w-1/3'>
                     <img
                       src={spec.image}
                       alt={spec.title}

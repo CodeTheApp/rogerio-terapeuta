@@ -16,7 +16,7 @@ export default function Hero() {
         >
           <h1 className='mb-8 font-serif text-on-surface text-4xl md:text-7xl leading-tight tracking-tight'>
             Espaço de Escuta e <br />
-            <span className='text-primary italic'>Transformação</span>
+            <span className='text-primary italic'>Acolhimento</span>
           </h1>
           <p className='mb-8 md:mb-10 max-w-xl text-on-surface-variant text-lg md:text-xl leading-relaxed'>
             Um refúgio para acolher suas dores, redescobrir suas forças e
@@ -39,9 +39,9 @@ export default function Hero() {
           transition={{ duration: 1, ease: 'easeOut', delay: 0.2 }}
           className='relative md:col-span-5'
         >
-          <div className='z-10 relative bg-surface-container-high shadow-2xl rounded-5xl aspect-[4/5] overflow-hidden md:rotate-2 hover:rotate-0 transition-transform duration-700 transform'>
+          <div className='z-10 relative bg-surface-container-high shadow-2xl rounded-5xl aspect-4/5 overflow-hidden md:rotate-2 hover:rotate-0 transition-transform duration-700 transform'>
             <img
-              src='https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?q=80&w=1974&auto=format&fit=crop'
+              src='/rogerioviana.png'
               alt='Rogério Viana'
               className='w-full h-full object-cover'
               referrerPolicy='no-referrer'

@@ -12,25 +12,24 @@ export default function Footer() {
               Rogério Viana
             </span>
             <p className='font-bold text-on-surface-variant/60 text-sm uppercase tracking-ultra-wide'>
-              © 2024 Rogério Viana. CRP 06/XXXXX. <br className='md:hidden' />
+              © 2026 Rogério Viana. CNP 05/3230. CBO 2515.50.
+            </p>
+            <p className='font-bold text-on-surface-variant/60 text-sm uppercase tracking-ultra-wide'>
               Todos os direitos reservados.
             </p>
           </div>
 
           <div className='flex flex-wrap justify-center gap-8 font-bold text-on-surface-variant/80 text-xs uppercase tracking-ultra-wide'>
-            <Link
-              href='/faq'
-              className='hover:text-primary transition-colors'
-            >
+            <Link href='/faq' className='hover:text-primary transition-colors'>
               FAQ
             </Link>
-            <a href='#' className='hover:text-primary transition-colors'>
-              Políticas
-            </a>
-            <a href='#' className='hover:text-primary transition-colors'>
+            <Link href='#' className='hover:text-primary transition-colors'>
+              Sobre mim
+            </Link>
+            <Link href='#' className='hover:text-primary transition-colors'>
               Termos
-            </a>
-            <a href='#' className='hover:text-primary transition-colors'>
+            </Link>
+            <a href='/contatp' className='hover:text-primary transition-colors'>
               Contato
             </a>
           </div>
@@ -42,7 +41,7 @@ export default function Footer() {
               target='_blank'
               rel='noopener noreferrer'
               aria-label='Ver Pombal, Leiria, Portugal no Google Maps'
-              className='flex items-center gap-2 bg-primary/5 hover:bg-primary/10 px-4 py-2 rounded-full text-primary text-sm font-medium transition-colors'
+              className='flex items-center gap-2 bg-primary/5 hover:bg-primary/10 px-4 py-2 rounded-full font-medium text-primary text-sm transition-colors'
             >
               <MapPin className='w-5 h-5' />
               <span>Pombal, Leiria · Portugal</span>

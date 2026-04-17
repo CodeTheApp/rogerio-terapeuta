@@ -1,27 +1,36 @@
-"use client";
+'use client';
 
-import { motion } from "motion/react";
-import { CheckCircle2 } from "lucide-react";
+import { CheckCircle2, ArrowRight } from 'lucide-react';
+import { motion } from 'motion/react';
+import { useRouter } from 'next/navigation';
+import { Button } from './Button';
 
 export default function About() {
+  const router = useRouter();
+
   return (
-    <section id="sobre" className="py-24 md:py-32 bg-surface-container-low px-6">
-      <div className="max-w-screen-2xl mx-auto grid md:grid-cols-2 gap-20 items-center">
+    <section
+      id='sobre'
+      className='bg-surface-container-low px-6 py-24 md:py-32'
+    >
+      <div className='items-center gap-20 grid md:grid-cols-2 mx-auto max-w-screen-2xl'>
         <motion.div
           initial={{ opacity: 0, x: -30 }}
           whileInView={{ opacity: 1, x: 0 }}
           viewport={{ once: true }}
-          className="order-2 md:order-1 relative"
+          className='relative order-2 md:order-1'
         >
           <img
-            src="https://images.unsplash.com/photo-1497366216548-37526070297c?q=80&w=2070&auto=format&fit=crop"
-            alt="Consultório"
-            className="rounded-4xl w-full aspect-square object-cover grayscale-[20%] hover:grayscale-0 transition-all duration-700"
-            referrerPolicy="no-referrer"
+            src='/rogerioviana.png'
+            alt='Rogério Viana'
+            className='grayscale-20 hover:grayscale-0 rounded-4xl w-full object-cover object-center aspect-square transition-all duration-700'
+            referrerPolicy='no-referrer'
           />
-          <div className="absolute -top-6 -right-6 bg-surface-container-lowest p-8 rounded-2xl shadow-xl hidden md:block border border-outline-variant">
-            <p className="font-serif text-3xl text-primary font-bold">15+</p>
-            <p className="text-xs uppercase tracking-ultra-wide text-on-surface-variant font-semibold">Anos de Prática</p>
+          <div className='hidden md:block -top-6 -right-6 absolute bg-surface-container-lowest shadow-xl p-8 border rounded-2xl border-outline-variant'>
+            <p className='font-serif font-bold text-primary text-3xl'>100%</p>
+            <p className='font-semibold text-on-surface-variant text-xs uppercase tracking-ultra-wide'>
+              Atendimento Online
+            </p>
           </div>
         </motion.div>
 
@@ -29,29 +38,47 @@ export default function About() {
           initial={{ opacity: 0, x: 30 }}
           whileInView={{ opacity: 1, x: 0 }}
           viewport={{ once: true }}
-          className="order-1 md:order-2"
+          className='order-1 md:order-2'
         >
-          <span className="text-secondary font-bold uppercase tracking-ultra-wide text-sm mb-6 block">Sobre Mim</span>
-          <h2 className="text-4xl md:text-5xl font-serif mb-8 text-on-surface leading-tight">Um olhar atento às profundezas da alma</h2>
-          <div className="space-y-6 text-on-surface-variant text-lg leading-relaxed">
+          <span className='block mb-6 font-bold text-secondary text-sm uppercase tracking-ultra-wide'>
+            Sobre Mim
+          </span>
+          <h2 className='mb-8 font-serif text-on-surface text-4xl md:text-5xl leading-tight'>
+            Escuta clínica com olhar integrativo
+          </h2>
+          <div className='space-y-6 text-on-surface-variant text-lg leading-relaxed'>
             <p>
-              Minha jornada na psicologia nasceu do desejo de compreender a complexidade humana sob uma ótica de acolhimento e respeito. Sou Rogério Viana, psicólogo clínico dedicado a proporcionar um ambiente de segurança absoluta.
+              Sou Rogério Viana, psicanalista clínico e infantil. Desde 2020,
+              recebo pessoas que buscam mais clareza emocional, equilíbrio
+              mental e um lugar seguro para se reconhecer.
             </p>
             <p>
-              Acredito que a terapia é um solo fértil onde, com o cuidado adequado, qualquer indivíduo pode florescer. Meu trabalho integra técnicas contemporâneas com uma escuta sensível às questões raciais, sociais e existenciais.
+              Meu trabalho integra psicanálise (com base em Freud, Anna Freud e
+              Winnicott), TCC, hipnoterapia, constelação sistêmica e Florais de
+              Bach — escolhendo o método que cada momento do processo pede.
             </p>
-            <ul className="space-y-4 pt-4">
+            <ul className='space-y-4 pt-4'>
               {[
-                "Graduado em Psicologia pela USP",
-                "Mestre em Psicologia Clínica e Social",
-                "Especialista em Fenomenologia Existencial"
+                'Psicanálise clínica e infantil',
+                'Abordagem integrativa (Freud · Winnicott · TCC)',
+                'Atendimento 100% online via Google Meet',
               ].map((item, i) => (
-                <li key={i} className="flex items-start gap-4">
-                  <CheckCircle2 className="w-6 h-6 text-primary shrink-0 mt-0.5" />
-                  <span className="text-on-surface">{item}</span>
+                <li key={i} className='flex items-start gap-4'>
+                  <CheckCircle2 className='mt-0.5 w-6 h-6 text-primary shrink-0' />
+                  <span className='text-on-surface'>{item}</span>
                 </li>
               ))}
             </ul>
+            <div className='pt-4'>
+              <Button
+                variant='tertiary'
+                size='md'
+                iconRight={<ArrowRight />}
+                onClick={() => router.push('/sobre')}
+              >
+                Conhecer minha história
+              </Button>
+            </div>
           </div>
         </motion.div>
       </div>

@@ -1,12 +1,6 @@
 "use client";
 
-import {
-  AudioWaveform,
-  Brain,
-  Compass,
-  Flower2,
-  Network,
-} from "lucide-react";
+import { Brain, Compass, Flower2, Network, Waves } from "lucide-react";
 import { motion } from "motion/react";
 
 const modalidades = [
@@ -26,7 +20,7 @@ const modalidades = [
     title: "Hipnoterapia",
     description:
       "Acesso a conteúdos profundos do psiquismo em estado de relaxamento, com segurança e direcionamento clínico.",
-    icon: AudioWaveform,
+    icon: Waves,
   },
   {
     title: "Constelação Sistêmica",

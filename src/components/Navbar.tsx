@@ -23,7 +23,7 @@ const navItems: NavItem[] = [
   { label: "Contato", href: "/contato", id: "contato", kind: "page" },
 ];
 
-const HOME_SECTION_IDS = ["especialidades", "depoimentos", "blog"];
+const HOME_SECTION_IDS = ["especialidades", "depoimentos"];
 
 export default function Navbar() {
   const pathname = usePathname();

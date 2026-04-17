@@ -2,9 +2,12 @@
 
 import { ArrowRight, Calendar } from 'lucide-react';
 import { motion } from 'motion/react';
+import { useRouter } from 'next/navigation';
 import { Button } from './Button';
 
 export default function Hero() {
+  const router = useRouter();
+
   return (
     <section className='relative bg-surface px-6 pt-32 md:pt-48 pb-20 md:pb-32 overflow-hidden'>
       <div className='items-center gap-12 grid md:grid-cols-12 mx-auto max-w-screen-2xl'>
@@ -27,7 +30,12 @@ export default function Hero() {
             <Button variant='primary' size='lg' iconLeft={<Calendar />}>
               Começar minha jornada
             </Button>
-            <Button variant='tertiary' size='lg' iconRight={<ArrowRight />}>
+            <Button
+              variant='tertiary'
+              size='lg'
+              iconRight={<ArrowRight />}
+              onClick={() => router.push('/sobre')}
+            >
               Conhecer Rogério
             </Button>
           </div>

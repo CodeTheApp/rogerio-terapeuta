@@ -1,6 +1,6 @@
 'use client';
 
-import { CheckCircle2, ArrowRight } from 'lucide-react';
+import { ArrowRight, CheckCircle2 } from 'lucide-react';
 import { motion } from 'motion/react';
 import { useRouter } from 'next/navigation';
 import { Button } from './Button';
@@ -21,9 +21,9 @@ export default function About() {
           className='relative order-2 md:order-1'
         >
           <img
-            src='/rogerioviana.png'
+            src='/pensando.png'
             alt='Rogério Viana'
-            className='grayscale-20 hover:grayscale-0 rounded-4xl w-full object-cover object-center aspect-square transition-all duration-700'
+            className='grayscale-20 hover:grayscale-0 rounded-4xl w-full object-center object-cover aspect-square transition-all duration-700'
             referrerPolicy='no-referrer'
           />
           <div className='hidden md:block -top-6 -right-6 absolute bg-surface-container-lowest shadow-xl p-8 border rounded-2xl border-outline-variant'>

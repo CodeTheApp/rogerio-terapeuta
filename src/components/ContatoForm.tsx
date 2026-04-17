@@ -1,25 +1,23 @@
-"use client";
+'use client';
 
-import { motion } from "motion/react";
-import { useState, type FormEvent } from "react";
-import { Button } from "./Button";
-import { InputField } from "./InputField";
+import { motion } from 'motion/react';
+import { useState, type FormEvent } from 'react';
+import { Button } from './Button';
+import { InputField } from './InputField';
 
-const CONTACT_EMAIL = "contato@rogerioviana.com";
+const CONTACT_EMAIL = 'contato@rogerioviana.com';
 
 export default function ContatoForm() {
-  const [name, setName] = useState("");
-  const [email, setEmail] = useState("");
-  const [subject, setSubject] = useState("");
-  const [message, setMessage] = useState("");
+  const [name, setName] = useState('');
+  const [phone, setPhone] = useState('');
+  const [subject, setSubject] = useState('');
+  const [message, setMessage] = useState('');
 
   const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    const body = `Nome: ${name}\nE-mail: ${email}\n\n${message}`;
-    const mailto = `mailto:${CONTACT_EMAIL}?subject=${encodeURIComponent(
-      subject || "Contato via site"
-    )}&body=${encodeURIComponent(body)}`;
-    window.location.href = mailto;
+    const body = `Nome: ${name}\nTelefone / WhatsApp: ${phone}\nAssunto: ${subject}\n\n${message}`;
+    const whatsapp = `https://wa.me/${phone}?text=${encodeURIComponent(body)}`;
+    window.open(whatsapp, '_blank');
   };
 
   return (
@@ -27,56 +25,56 @@ export default function ContatoForm() {
       onSubmit={handleSubmit}
       initial={{ opacity: 0, y: 20 }}
       whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true, margin: "-80px" }}
+      viewport={{ once: true, margin: '-80px' }}
       transition={{ duration: 0.5 }}
-      className="bg-surface-container-low rounded-4xl px-8 md:px-12 pt-10 pb-16 flex flex-col gap-8 shadow-subtle"
+      className='flex flex-col gap-8 bg-surface-container-low shadow-subtle px-8 md:px-12 pt-10 pb-16 rounded-4xl'
     >
       <InputField
-        label="Nome completo"
-        placeholder="Como gostaria de ser chamado?"
+        label='Nome completo'
+        placeholder='Como gostaria de ser chamado?'
         value={name}
         onChange={(e) => setName(e.target.value)}
         required
-        autoComplete="name"
+        autoComplete='name'
       />
 
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+      <div className='gap-6 grid grid-cols-1 md:grid-cols-2'>
         <InputField
-          label="E-mail"
-          type="email"
-          placeholder="seu@email.com"
-          value={email}
-          onChange={(e) => setEmail(e.target.value)}
+          label='Telefone / WhatsApp'
+          type='tel'
+          placeholder='+351 926 130 470'
+          value={phone}
+          onChange={(e) => setPhone(e.target.value)}
           required
-          autoComplete="email"
+          autoComplete='tel'
         />
         <InputField
-          label="Assunto"
-          placeholder="Qual o motivo do contato?"
+          label='Assunto'
+          placeholder='Qual o motivo do contato?'
           value={subject}
           onChange={(e) => setSubject(e.target.value)}
         />
       </div>
 
-      <div className="flex flex-col gap-2 w-full">
+      <div className='flex flex-col gap-2 w-full'>
         <label
-          htmlFor="contato-mensagem"
-          className="font-sans font-medium text-on-surface-variant text-label-md"
+          htmlFor='contato-mensagem'
+          className='font-sans font-medium text-label-md text-on-surface-variant'
         >
           SUA MENSAGEM
         </label>
         <textarea
-          id="contato-mensagem"
+          id='contato-mensagem'
           value={message}
           onChange={(e) => setMessage(e.target.value)}
-          placeholder="Sinta-se à vontade para compartilhar o que desejar..."
+          placeholder='Sinta-se à vontade para compartilhar o que desejar...'
           required
           rows={5}
-          className="w-full bg-surface-container-highest border-[1.5px] border-transparent focus:border-primary rounded-xl px-6 py-4 font-sans text-body-md text-on-surface placeholder:text-outline outline-none transition-colors duration-200 resize-y min-h-[140px]"
+          className='bg-surface-container-highest px-6 py-4 border-[1.5px] border-transparent focus:border-primary rounded-xl placeholder:text-outline outline-none w-full min-h-[140px] font-sans text-body-md text-on-surface transition-colors duration-200 resize-y'
         />
       </div>
 
-      <Button type="submit" variant="primary" size="lg" className="w-full">
+      <Button type='submit' variant='primary' size='lg' className='w-full'>
         Enviar Mensagem
       </Button>
     </motion.form>

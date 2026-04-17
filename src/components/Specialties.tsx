@@ -38,7 +38,7 @@ const specialties = [
     className: 'md:col-span-2 bg-surface-container-highest',
     iconColor: 'text-primary',
     image:
-      'https://images.unsplash.com/photo-1518531933037-91b2f5f229cc?q=80&w=1974&auto=format&fit=crop',
+      'https://plus.unsplash.com/premium_photo-1730151104203-25e0f0a269a0?q=80&w=687&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
   },
 ];
 
@@ -98,7 +98,7 @@ export default function Specialties() {
                     <img
                       src={spec.image}
                       alt={spec.title}
-                      className='shadow-lg rounded-3xl w-full h-64 object-cover'
+                      className='shadow-lg rounded-3xl w-full h-64 object-bottom object-cover'
                       referrerPolicy='no-referrer'
                     />
                   </div>

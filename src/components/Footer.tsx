@@ -23,13 +23,16 @@ export default function Footer() {
             <Link href='/faq' className='hover:text-primary transition-colors'>
               FAQ
             </Link>
-            <Link href='#' className='hover:text-primary transition-colors'>
+            <Link
+              href='/sobre'
+              className='hover:text-primary transition-colors'
+            >
               Sobre mim
             </Link>
-            <Link href='#' className='hover:text-primary transition-colors'>
-              Termos
+            <Link href='/blog' className='hover:text-primary transition-colors'>
+              Blog
             </Link>
-            <a href='/contatp' className='hover:text-primary transition-colors'>
+            <a href='/contato' className='hover:text-primary transition-colors'>
               Contato
             </a>
           </div>

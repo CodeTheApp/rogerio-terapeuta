@@ -16,14 +16,14 @@ type NavItem = {
 
 const navItems: NavItem[] = [
   { label: "Início", href: "/", id: "inicio", kind: "anchor" },
-  { label: "Sobre", href: "/#sobre", id: "sobre", kind: "anchor" },
+  { label: "Sobre", href: "/sobre", id: "sobre", kind: "page" },
   { label: "Especialidades", href: "/#especialidades", id: "especialidades", kind: "anchor" },
   { label: "Depoimentos", href: "/#depoimentos", id: "depoimentos", kind: "anchor" },
   { label: "Blog", href: "/blog", id: "blog", kind: "page" },
   { label: "Contato", href: "/contato", id: "contato", kind: "page" },
 ];
 
-const HOME_SECTION_IDS = ["sobre", "especialidades", "depoimentos", "blog"];
+const HOME_SECTION_IDS = ["especialidades", "depoimentos", "blog"];
 
 export default function Navbar() {
   const pathname = usePathname();

@@ -72,11 +72,10 @@ export default function About() {
           viewport={{ once: true }}
           className='relative order-2 md:order-1'
         >
-          {/* TODO: substituir /consultorio.png por foto pessoal do Rogério quando disponível */}
           <img
-            src='/consultorio.png'
-            alt='Consultório'
-            className='grayscale-20 hover:grayscale-0 rounded-4xl w-full object-cover object-left aspect-square transition-all duration-700'
+            src='/rogerioviana.png'
+            alt='Rogério Viana'
+            className='grayscale-20 hover:grayscale-0 rounded-4xl w-full object-cover object-center aspect-square transition-all duration-700'
             referrerPolicy='no-referrer'
           />
           <div className='hidden md:block -top-6 -right-6 absolute bg-surface-container-lowest shadow-xl p-8 border rounded-2xl border-outline-variant'>
@@ -311,11 +310,10 @@ export default function SobreHistoria() {
           viewport={{ once: true }}
           className="relative order-1 md:order-2"
         >
-          {/* TODO: substituir /consultorio.png por foto pessoal do Rogério quando disponível */}
           <img
-            src="/consultorio.png"
+            src="/rogerioviana.png"
             alt="Rogério Viana"
-            className="grayscale-20 hover:grayscale-0 rounded-4xl w-full object-cover aspect-square transition-all duration-700"
+            className="grayscale-20 hover:grayscale-0 rounded-4xl w-full object-cover object-center aspect-square transition-all duration-700"
             referrerPolicy="no-referrer"
           />
         </motion.div>

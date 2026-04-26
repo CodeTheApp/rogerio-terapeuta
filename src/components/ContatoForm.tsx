@@ -38,7 +38,7 @@ export default function ContatoForm() {
         autoComplete='name'
       />
 
-      <div className='gap-6 grid grid-cols-1 md:grid-cols-2'>
+      <div className='gap-6 grid grid-cols-1 sm:grid-cols-2'>
         <InputField
           label='Telefone / WhatsApp'
           type='tel'

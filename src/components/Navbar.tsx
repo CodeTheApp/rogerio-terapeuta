@@ -138,17 +138,17 @@ export default function Navbar() {
       animate={{ y: 0 }}
       className='top-0 z-50 fixed border-b border-outline-variant/40 w-full transition-all duration-300 glass'
     >
-      <div className='flex justify-between items-center mx-auto px-6 md:px-16 py-6 w-full max-w-screen-2xl'>
+      <div className='flex justify-between items-center mx-auto px-6 md:px-10 lg:px-16 py-4 w-full max-w-screen-2xl'>
         <Link href='/' aria-label='Viana Terapia — página inicial'>
           <img
             src='/logos/vt-hor-full-terra.svg'
             alt='Viana Terapia'
-            className='h-8 md:h-9 w-auto'
+            className='w-auto h-8 lg:h-10'
             referrerPolicy='no-referrer'
           />
         </Link>
 
-        <div className='hidden md:flex items-center gap-6 lg:gap-8 font-serif font-medium tracking-tight'>
+        <div className='hidden lg:flex items-center gap-6 xl:gap-8 font-serif font-medium tracking-tight'>
           {navItems.map((item) => (
             <Link
               key={item.id}
@@ -162,7 +162,7 @@ export default function Navbar() {
         </div>
 
         <div className='flex items-center gap-2'>
-          <div className='hidden md:block'>
+          <div className='hidden lg:block'>
             <Button
               variant='primary'
               size='sm'
@@ -178,7 +178,7 @@ export default function Navbar() {
             aria-expanded={isMobileMenuOpen}
             aria-controls='mobile-menu'
             onClick={() => setIsMobileMenuOpen((prev) => !prev)}
-            className='md:hidden p-2 rounded-lg focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary text-on-surface hover:text-primary transition-colors cursor-pointer'
+            className='lg:hidden p-2 rounded-lg focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary text-on-surface hover:text-primary transition-colors cursor-pointer'
           >
             {isMobileMenuOpen ? (
               <X className='w-6 h-6' />
@@ -197,7 +197,7 @@ export default function Navbar() {
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -10 }}
             transition={{ duration: 0.2, ease: 'easeOut' }}
-            className='md:hidden border-t border-outline-variant/40 glass'
+            className='lg:hidden border-t border-outline-variant/40 glass'
           >
             <div className='flex flex-col items-start gap-6 px-6 py-8 font-serif text-lg'>
               {navItems.map((item) => (

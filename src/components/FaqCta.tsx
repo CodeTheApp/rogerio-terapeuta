@@ -2,8 +2,10 @@
 
 import { motion } from "motion/react";
 import { MessageSquare } from "lucide-react";
+import { useRouter } from "next/navigation";
 
 export default function FaqCta() {
+  const router = useRouter();
   return (
     <section className="px-6 py-12 md:py-16 bg-surface">
       <motion.div
@@ -29,8 +31,11 @@ export default function FaqCta() {
             </p>
           </div>
           <div className="flex flex-col sm:flex-row gap-4 shrink-0">
+            {/* Botões raw porque o fundo é bg-primary-container — o <Button>
+                padrão é desenhado para fundo neutro e perde contraste aqui. */}
             <button
               type="button"
+              onClick={() => router.push("/contato")}
               className="inline-flex items-center justify-center gap-2 px-8 py-4 bg-surface text-primary font-sans font-semibold rounded-xl shadow-subtle hover:bg-surface-container-low transition-colors cursor-pointer focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-on-primary-container"
             >
               <MessageSquare className="w-5 h-5" aria-hidden />
@@ -38,6 +43,7 @@ export default function FaqCta() {
             </button>
             <button
               type="button"
+              onClick={() => router.push("/contato")}
               className="inline-flex items-center justify-center px-8 py-4 border border-on-primary-container/30 text-on-primary-container font-sans font-semibold rounded-xl hover:bg-on-primary-container/10 transition-colors cursor-pointer focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-on-primary-container"
             >
               Ver Contatos

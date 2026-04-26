@@ -11,7 +11,7 @@ const specialties = [
       'Desenvolvimento de estratégias para lidar com as pressões do cotidiano e reencontrar a calma interior em meio ao caos.',
     icon: Brain,
     tags: ['Crises de Pânico', 'Depressão', 'Ansiedade'],
-    className: 'md:col-span-2 bg-surface-container-high',
+    className: 'lg:col-span-2 bg-surface-container-high',
     iconColor: 'text-primary',
   },
   {
@@ -35,7 +35,7 @@ const specialties = [
     description:
       'Trabalho focado na mudança de comportamentos e pensamentos para controle da saúde emocional.',
     icon: Sparkles,
-    className: 'md:col-span-2 bg-surface-container-highest',
+    className: 'lg:col-span-2 bg-surface-container-highest',
     iconColor: 'text-primary',
     image:
       'https://plus.unsplash.com/premium_photo-1730151104203-25e0f0a269a0?q=80&w=687&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
@@ -56,7 +56,7 @@ export default function Specialties() {
           </p>
         </div>
 
-        <div className='gap-6 grid grid-cols-1 md:grid-cols-3'>
+        <div className='gap-6 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3'>
           {specialties.map((spec, i) => (
             <motion.div
               key={i}

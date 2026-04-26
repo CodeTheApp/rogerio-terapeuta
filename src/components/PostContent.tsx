@@ -178,9 +178,9 @@ export default function PostContent({ post }: { post: Post }) {
                 placeholder='Seu melhor e-mail'
                 className='bg-surface-container-lowest px-5 py-4 border-none rounded-xl focus:ring-1 focus:ring-primary w-full placeholder:text-on-surface-variant/50 text-sm'
               />
-              <button className='bg-primary hover:opacity-90 py-4 rounded-xl w-full font-semibold text-on-primary text-sm transition-all'>
+              <Button type='submit' variant='primary' size='md' className='w-full'>
                 Inscrever-se agora
-              </button>
+              </Button>
             </form>
             <p className='mt-4 text-[10px] text-on-surface-variant/60 text-center uppercase tracking-widest'>
               Privacidade garantida.

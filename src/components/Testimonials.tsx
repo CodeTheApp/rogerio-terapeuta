@@ -26,7 +26,7 @@ export default function Testimonials() {
     <section id="depoimentos" className="py-24 md:py-32 bg-surface-container-low px-6 overflow-hidden">
       <div className="max-w-screen-2xl mx-auto">
         <h2 className="text-4xl md:text-5xl font-serif mb-16 text-on-surface text-center">Relatos de Caminhadas</h2>
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 items-stretch">
           {testimonials.map((t, i) => (
             <motion.div
               key={i}
@@ -34,12 +34,13 @@ export default function Testimonials() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ delay: i * 0.1 }}
-              className="hover:-translate-y-2 transition-transform duration-500"
+              className="h-full hover:-translate-y-2 transition-transform duration-500"
             >
               <TestimonialCard
                 quote={t.text}
                 author={t.author}
                 role={t.role}
+                className="h-full"
               />
             </motion.div>
           ))}

@@ -5,13 +5,13 @@ import { ShareButton } from './ShareButton';
 export default function Footer() {
   return (
     <footer className='bg-surface-container-low border-t border-outline-variant/40 w-full'>
-      <div className='mx-auto px-6 md:px-16 py-16 max-w-screen-2xl'>
-        <div className='flex md:flex-row flex-col justify-between items-center gap-12'>
-          <div className='flex flex-col items-center md:items-start md:text-left text-center'>
+      <div className='mx-auto px-6 md:px-10 lg:px-16 py-16 max-w-screen-2xl'>
+        <div className='flex lg:flex-row flex-col justify-between items-center gap-12'>
+          <div className='flex flex-col items-center lg:items-start lg:text-left text-center'>
             <img
               src='/logos/vt-hor-full-terra.svg'
               alt='Viana Terapia'
-              className='mb-4 h-10 md:h-12 w-auto'
+              className='mb-4 h-10 lg:h-12 w-auto'
               referrerPolicy='no-referrer'
             />
             <p className='font-bold text-on-surface-variant/60 text-sm uppercase tracking-ultra-wide'>
@@ -49,8 +49,10 @@ export default function Footer() {
               aria-label='Ver Pombal, Leiria, Portugal no Google Maps'
               className='flex items-center gap-2 bg-primary/5 hover:bg-primary/10 px-4 py-2 rounded-full font-medium text-primary text-sm transition-colors'
             >
-              <MapPin className='w-5 h-5' />
-              <span>Pombal, Leiria · Portugal</span>
+              <MapPin className='w-5 h-5 shrink-0' />
+              <span className='whitespace-nowrap'>
+                Pombal, Leiria · Portugal
+              </span>
             </a>
           </div>
         </div>

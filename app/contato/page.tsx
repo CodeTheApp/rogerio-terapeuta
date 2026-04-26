@@ -15,7 +15,7 @@ export default function ContatoPage() {
     <>
       <ContatoHero />
       <section className='bg-surface px-6 pb-16 md:pb-24'>
-        <div className='items-start gap-12 md:gap-20 grid grid-cols-1 md:grid-cols-2 mx-auto max-w-6xl'>
+        <div className='items-start gap-12 lg:gap-20 grid grid-cols-1 lg:grid-cols-2 mx-auto max-w-6xl'>
           <ContatoForm />
           <ContatoInfo />
         </div>

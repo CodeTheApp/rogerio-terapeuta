@@ -1,5 +1,6 @@
 import BlogContent from '@/src/components/BlogContent';
 import type { Metadata } from 'next';
+import { Suspense } from 'react';
 
 export const metadata: Metadata = {
   title: 'Blog - Escritas da Alma | Viana Terapia',
@@ -8,5 +9,9 @@ export const metadata: Metadata = {
 };
 
 export default function BlogPage() {
-  return <BlogContent />;
+  return (
+    <Suspense>
+      <BlogContent />
+    </Suspense>
+  );
 }

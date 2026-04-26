@@ -11,8 +11,13 @@ import {
 } from 'lucide-react';
 import { motion } from 'motion/react';
 import Link from 'next/link';
-import { useMemo, useState } from 'react';
+import { usePathname, useRouter, useSearchParams } from 'next/navigation';
+import { useEffect, useMemo, useState } from 'react';
 import { posts } from '../data/posts';
+
+const PARAM_CATEGORIA = 'categoria';
+const PARAM_BUSCA = 'q';
+const URL_DEBOUNCE_MS = 250;
 
 const formatCount = (n: number) => (n < 10 ? `0${n}` : String(n));
 
@@ -27,8 +32,34 @@ const matchesQuery = (post: (typeof posts)[number], q: string) => {
 };
 
 export default function BlogContent() {
-  const [selectedCategory, setSelectedCategory] = useState<string | null>(null);
-  const [searchQuery, setSearchQuery] = useState('');
+  const router = useRouter();
+  const pathname = usePathname();
+  const searchParams = useSearchParams();
+
+  const [selectedCategory, setSelectedCategory] = useState<string | null>(
+    () => searchParams.get(PARAM_CATEGORIA),
+  );
+  const [searchQuery, setSearchQuery] = useState(
+    () => searchParams.get(PARAM_BUSCA) ?? '',
+  );
+
+  useEffect(() => {
+    const params = new URLSearchParams();
+    if (selectedCategory) params.set(PARAM_CATEGORIA, selectedCategory);
+    const trimmed = searchQuery.trim();
+    if (trimmed) params.set(PARAM_BUSCA, trimmed);
+
+    const queryString = params.toString();
+    const target = queryString ? `${pathname}?${queryString}` : pathname;
+
+    if (target === `${pathname}${window.location.search}`) return;
+
+    const id = window.setTimeout(() => {
+      router.replace(target, { scroll: false });
+    }, URL_DEBOUNCE_MS);
+
+    return () => window.clearTimeout(id);
+  }, [selectedCategory, searchQuery, pathname, router]);
 
   const categories = useMemo(() => {
     const counts = new Map<string, number>();

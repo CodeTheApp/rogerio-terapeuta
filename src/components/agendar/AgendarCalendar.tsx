@@ -26,7 +26,7 @@ export default function AgendarCalendar() {
         <Cal
           calLink={CAL_LINK}
           calOrigin={CAL_ORIGIN}
-          style={{ width: "100%", height: "100%", minHeight: "720px" }}
+          style={{ width: "100%" }}
           config={{ layout: "month_view" }}
         />
       </div>

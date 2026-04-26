@@ -37,8 +37,8 @@ const infoItems: InfoItem[] = [
   {
     icon: Mail,
     label: 'E-mail Direto',
-    value: 'contato@vianaterapia.com',
-    href: 'mailto:contato@vianaterapia.com',
+    value: 'rogeriosilviana@gmail.com',
+    href: 'mailto:rogeriosilviana@gmail.com',
   },
   {
     icon: MapPin,

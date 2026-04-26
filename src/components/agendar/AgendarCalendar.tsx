@@ -58,7 +58,7 @@ export default function AgendarCalendar() {
               calLink={selected}
               calOrigin={CAL_ORIGIN}
               style={{ width: '100%' }}
-              config={{ layout: 'month_view' }}
+              config={{ layout: 'month_view', locale: 'pt-BR' }}
             />
           </div>
         </div>

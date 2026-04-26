@@ -5,7 +5,7 @@ import { useState, type FormEvent } from 'react';
 import { Button } from './Button';
 import { InputField } from './InputField';
 
-const CONTACT_EMAIL = 'contato@rogerioviana.com';
+const CONTACT_EMAIL = 'contato@vianaterapia.com';
 
 export default function ContatoForm() {
   const [name, setName] = useState('');

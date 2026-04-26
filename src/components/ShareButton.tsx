@@ -11,7 +11,7 @@ export function ShareButton() {
 
     const url = window.location.href;
     const shareData = {
-      title: 'Rogério Viana — Psicólogo Clínico',
+      title: 'Viana Terapia — Psicanálise Clínica',
       text: 'Espaço de escuta e transformação.',
       url,
     };

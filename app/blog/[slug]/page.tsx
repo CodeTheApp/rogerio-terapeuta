@@ -1,7 +1,7 @@
-import type { Metadata } from "next";
-import { posts } from "@/src/data/posts";
-import PostContent from "@/src/components/PostContent";
-import { notFound } from "next/navigation";
+import PostContent from '@/src/components/PostContent';
+import { posts } from '@/src/data/posts';
+import type { Metadata } from 'next';
+import { notFound } from 'next/navigation';
 
 type Params = { slug: string };
 
@@ -18,10 +18,10 @@ export async function generateMetadata({
 }): Promise<Metadata> {
   const { slug } = await params;
   const post = posts.find((p) => p.slug === slug);
-  if (!post) return { title: "Artigo não encontrado" };
+  if (!post) return { title: 'Artigo não encontrado' };
 
   return {
-    title: `${post.title} | Rogério Viana`,
+    title: `${post.title} | Viana Terapia`,
     description: post.excerpt,
   };
 }

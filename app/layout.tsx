@@ -19,7 +19,7 @@ const manrope = Manrope({
 });
 
 export const metadata: Metadata = {
-  title: 'Rogério Viana · Psicólogo Clínico',
+  title: 'Viana Terapia · Psicanálise Clínica',
   description:
     'Espaço de escuta e transformação. Terapia integrativa com acolhimento e respeito.',
 };

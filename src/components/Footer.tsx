@@ -9,10 +9,10 @@ export default function Footer() {
         <div className='flex md:flex-row flex-col justify-between items-center gap-12'>
           <div className='flex flex-col items-center md:items-start md:text-left text-center'>
             <span className='mb-4 font-serif font-bold text-on-surface text-2xl'>
-              Rogério Viana
+              Viana Terapia
             </span>
             <p className='font-bold text-on-surface-variant/60 text-sm uppercase tracking-ultra-wide'>
-              © 2026 Rogério Viana. CNP 05/3230. CBO 2515.50.
+              © 2026 Viana Terapia. CNP 05/3230. CBO 2515.50.
             </p>
             <p className='font-bold text-on-surface-variant/60 text-sm uppercase tracking-ultra-wide'>
               Todos os direitos reservados.

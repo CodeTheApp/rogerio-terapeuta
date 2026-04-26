@@ -169,8 +169,8 @@ export default function BlogContent() {
             <div className='z-10 relative'>
               <Quote size={40} className='opacity-50 mb-4' />
               <p className='mb-8 font-headline text-2xl italic leading-relaxed'>
-                "Onde não se pode falar, deve-se calar. Mas onde a alma grita, a
-                escuta cura."
+                &ldquo;Onde não se pode falar, deve-se calar. Mas onde a alma
+                grita, a escuta cura.&rdquo;
               </p>
               <div className='bg-on-tertiary-container/30 mb-8 w-16 h-px' />
               <h5 className='mb-2 font-bold text-sm uppercase tracking-widest'>

@@ -16,7 +16,7 @@ export default function PostContent({ post }: { post: Post }) {
 
     const url = window.location.href;
     const shareData = {
-      title: 'Rogério Viana — Psicólogo Clínico',
+      title: 'Viana Terapia — Psicanálise Clínica',
       text: 'Espaço de escuta e transformação.',
       url,
     };
@@ -53,7 +53,7 @@ export default function PostContent({ post }: { post: Post }) {
 
       <div className='mx-auto mb-16 px-8 max-w-7xl'>
         <div className='items-center gap-12 grid grid-cols-1 lg:grid-cols-12'>
-          <div className='lg:col-span-8'>
+          <div className='lg:col-span-12'>
             <motion.span
               initial={{ opacity: 0, y: 10 }}
               animate={{ opacity: 1, y: 0 }}
@@ -120,7 +120,7 @@ export default function PostContent({ post }: { post: Post }) {
           <div className='flex flex-wrap gap-3 mt-16 pt-12 border-t border-outline-variant'>
             {[
               'Auto-conhecimento',
-              'Psicologia',
+              'Saúde Emocional',
               'Mindfulness',
               'Bem-estar',
             ].map((tag) => (
@@ -147,7 +147,8 @@ export default function PostContent({ post }: { post: Post }) {
                 <div>
                   <p className='font-bold text-on-surface'>Rogério Viana</p>
                   <p className='text-on-surface-variant text-sm'>
-                    Psicanalista Clínico · CNP 05/3230 · CBO 2515.50.
+                    Psicanalista Clínico e Terapeuta · CNP 05/3230 · CBO
+                    2515.50.
                   </p>
                 </div>
               </div>
@@ -227,7 +228,7 @@ export default function PostContent({ post }: { post: Post }) {
               Rogério Viana
             </h5>
             <p className='mb-4 font-medium text-secondary text-xs italic'>
-              Psicanalista Clínico & Escritor
+              Psicanalista Clínico & Terapeuta
             </p>
             {/* <div className='flex justify-center gap-4 text-primary'>
               <Share2 size={18} className='hover:opacity-70 cursor-pointer' />

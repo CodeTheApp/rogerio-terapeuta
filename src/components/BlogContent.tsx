@@ -16,8 +16,19 @@ import { posts } from '../data/posts';
 
 const formatCount = (n: number) => (n < 10 ? `0${n}` : String(n));
 
+const stripHtml = (s: string) => s.replace(/<[^>]*>/g, ' ');
+
+const matchesQuery = (post: (typeof posts)[number], q: string) => {
+  if (!q) return true;
+  const haystack = [post.title, post.excerpt, post.category, stripHtml(post.content)]
+    .join(' ')
+    .toLowerCase();
+  return haystack.includes(q.toLowerCase().trim());
+};
+
 export default function BlogContent() {
   const [selectedCategory, setSelectedCategory] = useState<string | null>(null);
+  const [searchQuery, setSearchQuery] = useState('');
 
   const categories = useMemo(() => {
     const counts = new Map<string, number>();
@@ -29,14 +40,27 @@ export default function BlogContent() {
       .sort((a, b) => b.count - a.count || a.name.localeCompare(b.name));
   }, []);
 
+  const trimmedQuery = searchQuery.trim();
+  const isFiltering = Boolean(selectedCategory) || trimmedQuery.length > 0;
+
   const featuredPost = posts.find((p) => p.featured);
-  const visibleFeatured = selectedCategory ? null : featuredPost;
-  const visiblePosts = selectedCategory
-    ? posts.filter((p) => p.category === selectedCategory)
-    : posts.filter((p) => !p.featured);
+  const visibleFeatured = isFiltering ? null : featuredPost;
+  const visiblePosts = useMemo(() => {
+    const base = isFiltering ? posts : posts.filter((p) => !p.featured);
+    return base.filter(
+      (p) =>
+        (!selectedCategory || p.category === selectedCategory) &&
+        matchesQuery(p, trimmedQuery),
+    );
+  }, [isFiltering, selectedCategory, trimmedQuery]);
 
   const toggleCategory = (name: string) => {
     setSelectedCategory((current) => (current === name ? null : name));
+  };
+
+  const clearAllFilters = () => {
+    setSelectedCategory(null);
+    setSearchQuery('');
   };
 
   return (
@@ -90,28 +114,47 @@ export default function BlogContent() {
 
       <div className='gap-16 grid grid-cols-1 lg:grid-cols-12'>
         <div className='lg:col-span-8'>
-          {selectedCategory && (
-            <div className='flex items-center gap-3 mb-8'>
+          {isFiltering && (
+            <div className='flex flex-wrap items-center gap-3 mb-8'>
               <span className='text-on-surface-variant text-sm'>
                 Filtrando por
               </span>
-              <button
-                type='button'
-                onClick={() => setSelectedCategory(null)}
-                className='inline-flex items-center gap-2 bg-primary-container hover:bg-primary px-3 py-1 rounded-full font-semibold text-on-primary-container hover:text-on-primary text-xs uppercase tracking-widest transition-colors cursor-pointer'
-              >
-                {selectedCategory}
-                <X className='w-3 h-3' />
-              </button>
+              {selectedCategory && (
+                <button
+                  type='button'
+                  onClick={() => setSelectedCategory(null)}
+                  className='inline-flex items-center gap-2 bg-primary-container hover:bg-primary px-3 py-1 rounded-full font-semibold text-on-primary-container hover:text-on-primary text-xs uppercase tracking-widest transition-colors cursor-pointer'
+                >
+                  {selectedCategory}
+                  <X className='w-3 h-3' />
+                </button>
+              )}
+              {trimmedQuery && (
+                <button
+                  type='button'
+                  onClick={() => setSearchQuery('')}
+                  className='inline-flex items-center gap-2 bg-secondary-container hover:bg-secondary px-3 py-1 rounded-full font-semibold text-on-secondary-container hover:text-on-secondary text-xs transition-colors cursor-pointer'
+                >
+                  &ldquo;{trimmedQuery}&rdquo;
+                  <X className='w-3 h-3' />
+                </button>
+              )}
               <span className='text-on-surface-variant/60 text-sm'>
                 {visiblePosts.length}{' '}
                 {visiblePosts.length === 1 ? 'artigo' : 'artigos'}
               </span>
+              <button
+                type='button'
+                onClick={clearAllFilters}
+                className='ml-auto font-medium text-primary text-xs hover:underline cursor-pointer'
+              >
+                Limpar tudo
+              </button>
             </div>
           )}
           {visiblePosts.length === 0 ? (
             <p className='py-16 text-on-surface-variant text-center'>
-              Nenhum artigo nesta categoria por enquanto.
+              Nenhum artigo encontrado com esses filtros.
             </p>
           ) : (
             <div className='gap-12 grid grid-cols-1 md:grid-cols-2'>
@@ -177,12 +220,25 @@ export default function BlogContent() {
               <input
                 type='text'
                 placeholder='Busque um tema...'
-                className='bg-surface-container-lowest px-4 py-3 border-none rounded-xl focus:ring-2 focus:ring-primary w-full text-on-surface placeholder:text-secondary/50'
+                value={searchQuery}
+                onChange={(e) => setSearchQuery(e.target.value)}
+                className='bg-surface-container-lowest pr-11 pl-4 py-3 border-none rounded-xl focus:ring-2 focus:ring-primary w-full text-on-surface placeholder:text-secondary/50'
               />
-              <Search
-                className='top-1/2 right-4 absolute text-secondary/50 -translate-y-1/2'
-                size={20}
-              />
+              {searchQuery ? (
+                <button
+                  type='button'
+                  onClick={() => setSearchQuery('')}
+                  aria-label='Limpar busca'
+                  className='top-1/2 right-3 absolute p-1 rounded-full text-secondary/70 hover:text-primary hover:bg-surface-container transition-colors -translate-y-1/2 cursor-pointer'
+                >
+                  <X size={16} />
+                </button>
+              ) : (
+                <Search
+                  className='top-1/2 right-4 absolute text-secondary/50 -translate-y-1/2'
+                  size={20}
+                />
+              )}
             </div>
           </div>
 

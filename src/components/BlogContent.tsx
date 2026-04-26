@@ -7,14 +7,37 @@ import {
   ChevronRight,
   Quote,
   Search,
+  X,
 } from 'lucide-react';
 import { motion } from 'motion/react';
 import Link from 'next/link';
+import { useMemo, useState } from 'react';
 import { posts } from '../data/posts';
 
+const formatCount = (n: number) => (n < 10 ? `0${n}` : String(n));
+
 export default function BlogContent() {
+  const [selectedCategory, setSelectedCategory] = useState<string | null>(null);
+
+  const categories = useMemo(() => {
+    const counts = new Map<string, number>();
+    for (const p of posts) {
+      counts.set(p.category, (counts.get(p.category) ?? 0) + 1);
+    }
+    return Array.from(counts.entries())
+      .map(([name, count]) => ({ name, count }))
+      .sort((a, b) => b.count - a.count || a.name.localeCompare(b.name));
+  }, []);
+
   const featuredPost = posts.find((p) => p.featured);
-  const regularPosts = posts.filter((p) => !p.featured);
+  const visibleFeatured = selectedCategory ? null : featuredPost;
+  const visiblePosts = selectedCategory
+    ? posts.filter((p) => p.category === selectedCategory)
+    : posts.filter((p) => !p.featured);
+
+  const toggleCategory = (name: string) => {
+    setSelectedCategory((current) => (current === name ? null : name));
+  };
 
   return (
     <motion.div
@@ -33,14 +56,14 @@ export default function BlogContent() {
         </p>
       </header>
 
-      {featuredPost && (
+      {visibleFeatured && (
         <section className='mb-24'>
-          <Link href={`/blog/${featuredPost.slug}`} className='group block'>
+          <Link href={`/blog/${visibleFeatured.slug}`} className='group block'>
             <div className='relative grid grid-cols-1 lg:grid-cols-12 bg-surface-container-low rounded-[2rem] min-h-[500px] overflow-hidden'>
               <div className='relative lg:col-span-7 h-[300px] lg:h-full overflow-hidden'>
                 <img
-                  src={featuredPost.image}
-                  alt={featuredPost.title}
+                  src={visibleFeatured.image}
+                  alt={visibleFeatured.title}
                   className='absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-700'
                   referrerPolicy='no-referrer'
                 />
@@ -50,10 +73,10 @@ export default function BlogContent() {
                   Destaque da Semana
                 </span>
                 <h2 className='mb-6 font-bold text-on-surface text-3xl md:text-4xl leading-tight'>
-                  {featuredPost.title}
+                  {visibleFeatured.title}
                 </h2>
                 <p className='mb-8 text-on-surface-variant text-lg leading-relaxed'>
-                  {featuredPost.excerpt}
+                  {visibleFeatured.excerpt}
                 </p>
                 <span className='inline-flex items-center gap-2 bg-primary hover:opacity-90 px-8 py-3 rounded-xl w-fit text-on-primary transition-all'>
                   Ler Reflexão Completa
@@ -67,9 +90,33 @@ export default function BlogContent() {
 
       <div className='gap-16 grid grid-cols-1 lg:grid-cols-12'>
         <div className='lg:col-span-8'>
-          <div className='gap-12 grid grid-cols-1 md:grid-cols-2'>
-            {regularPosts.map((post) => (
-              <article key={post.id} className='group flex flex-col'>
+          {selectedCategory && (
+            <div className='flex items-center gap-3 mb-8'>
+              <span className='text-on-surface-variant text-sm'>
+                Filtrando por
+              </span>
+              <button
+                type='button'
+                onClick={() => setSelectedCategory(null)}
+                className='inline-flex items-center gap-2 bg-primary-container hover:bg-primary px-3 py-1 rounded-full font-semibold text-on-primary-container hover:text-on-primary text-xs uppercase tracking-widest transition-colors cursor-pointer'
+              >
+                {selectedCategory}
+                <X className='w-3 h-3' />
+              </button>
+              <span className='text-on-surface-variant/60 text-sm'>
+                {visiblePosts.length}{' '}
+                {visiblePosts.length === 1 ? 'artigo' : 'artigos'}
+              </span>
+            </div>
+          )}
+          {visiblePosts.length === 0 ? (
+            <p className='py-16 text-on-surface-variant text-center'>
+              Nenhum artigo nesta categoria por enquanto.
+            </p>
+          ) : (
+            <div className='gap-12 grid grid-cols-1 md:grid-cols-2'>
+              {visiblePosts.map((post) => (
+                <article key={post.id} className='group flex flex-col'>
                 <Link href={`/blog/${post.slug}`} className='block'>
                   <div className='bg-surface-container-low mb-6 rounded-[2rem] aspect-[4/3] overflow-hidden'>
                     <img
@@ -104,8 +151,9 @@ export default function BlogContent() {
                   <ArrowUpRight size={14} />
                 </Link>
               </article>
-            ))}
-          </div>
+              ))}
+            </div>
+          )}
 
           <div className='flex justify-center items-center gap-4 mt-20'>
             <button className='flex justify-center items-center hover:bg-secondary-container border hover:border-transparent rounded-full border-outline-variant w-12 h-12 text-secondary transition-all'>
@@ -139,29 +187,49 @@ export default function BlogContent() {
           </div>
 
           <div className='p-8'>
-            <h4 className='mb-6 font-headline text-on-surface text-xl'>
-              Categorias
-            </h4>
+            <div className='flex justify-between items-baseline mb-6'>
+              <h4 className='font-headline text-on-surface text-xl'>
+                Categorias
+              </h4>
+              {selectedCategory && (
+                <button
+                  type='button'
+                  onClick={() => setSelectedCategory(null)}
+                  className='font-medium text-primary text-xs hover:underline cursor-pointer'
+                >
+                  Limpar
+                </button>
+              )}
+            </div>
             <ul className='space-y-4'>
-              {[
-                { name: 'Ansiedade', count: 12 },
-                { name: 'Relacionamentos', count: 8 },
-                { name: 'Autoconhecimento', count: 15 },
-                { name: 'Saúde Mental', count: 22 },
-                { name: 'Luto e Perda', count: 5 },
-              ].map((cat) => (
-                <li key={cat.name}>
-                  <a
-                    href='#'
-                    className='group flex justify-between items-center text-secondary hover:text-primary transition-all'
-                  >
-                    <span className='font-medium'>{cat.name}</span>
-                    <span className='bg-surface-container-low group-hover:bg-primary-container px-2 py-1 rounded-full group-hover:text-on-primary text-xs'>
-                      {cat.count < 10 ? `0${cat.count}` : cat.count}
-                    </span>
-                  </a>
-                </li>
-              ))}
+              {categories.map((cat) => {
+                const isActive = selectedCategory === cat.name;
+                return (
+                  <li key={cat.name}>
+                    <button
+                      type='button'
+                      onClick={() => toggleCategory(cat.name)}
+                      aria-pressed={isActive}
+                      className={`group w-full flex justify-between items-center transition-all cursor-pointer ${
+                        isActive
+                          ? 'text-primary font-semibold'
+                          : 'text-secondary hover:text-primary font-medium'
+                      }`}
+                    >
+                      <span>{cat.name}</span>
+                      <span
+                        className={`px-2 py-1 rounded-full text-xs transition-colors ${
+                          isActive
+                            ? 'bg-primary text-on-primary'
+                            : 'bg-surface-container-low group-hover:bg-primary-container group-hover:text-on-primary-container'
+                        }`}
+                      >
+                        {formatCount(cat.count)}
+                      </span>
+                    </button>
+                  </li>
+                );
+              })}
             </ul>
           </div>
 

@@ -1,6 +1,6 @@
 import Footer from '@/src/components/Footer';
 import Navbar from '@/src/components/Navbar';
-import type { Metadata } from 'next';
+import type { Metadata, Viewport } from 'next';
 import { Manrope, Noto_Serif } from 'next/font/google';
 import './globals.css';
 
@@ -22,6 +22,27 @@ export const metadata: Metadata = {
   title: 'Viana Terapia · Psicanálise Clínica',
   description:
     'Espaço de escuta e transformação. Terapia integrativa com acolhimento e respeito.',
+  icons: {
+    icon: [
+      { url: '/favicons/favicon.ico', sizes: 'any' },
+      {
+        url: '/favicons/favicon-16x16.png',
+        sizes: '16x16',
+        type: 'image/png',
+      },
+      {
+        url: '/favicons/favicon-32x32.png',
+        sizes: '32x32',
+        type: 'image/png',
+      },
+    ],
+    apple: '/favicons/apple-touch-icon.png',
+  },
+  manifest: '/favicons/site.webmanifest',
+};
+
+export const viewport: Viewport = {
+  themeColor: '#84432e',
 };
 
 export default function RootLayout({

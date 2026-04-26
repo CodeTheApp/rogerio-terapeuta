@@ -8,9 +8,12 @@ export default function Footer() {
       <div className='mx-auto px-6 md:px-16 py-16 max-w-screen-2xl'>
         <div className='flex md:flex-row flex-col justify-between items-center gap-12'>
           <div className='flex flex-col items-center md:items-start md:text-left text-center'>
-            <span className='mb-4 font-serif font-bold text-on-surface text-2xl'>
-              Viana Terapia
-            </span>
+            <img
+              src='/logos/vt-hor-full-terra.svg'
+              alt='Viana Terapia'
+              className='mb-4 h-10 md:h-12 w-auto'
+              referrerPolicy='no-referrer'
+            />
             <p className='font-bold text-on-surface-variant/60 text-sm uppercase tracking-ultra-wide'>
               © 2026 Viana Terapia. CNP 05/3230. CBO 2515.50.
             </p>

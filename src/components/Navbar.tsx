@@ -139,11 +139,13 @@ export default function Navbar() {
       className='top-0 z-50 fixed border-b border-outline-variant/40 w-full transition-all duration-300 glass'
     >
       <div className='flex justify-between items-center mx-auto px-6 md:px-16 py-6 w-full max-w-screen-2xl'>
-        <Link
-          href='/'
-          className='font-serif font-semibold text-on-surface text-2xl tracking-tighter'
-        >
-          Viana Terapia
+        <Link href='/' aria-label='Viana Terapia — página inicial'>
+          <img
+            src='/logos/vt-hor-full-terra.svg'
+            alt='Viana Terapia'
+            className='h-8 md:h-9 w-auto'
+            referrerPolicy='no-referrer'
+          />
         </Link>
 
         <div className='hidden md:flex items-center gap-6 lg:gap-8 font-serif font-medium tracking-tight'>

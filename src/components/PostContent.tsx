@@ -3,13 +3,21 @@
 import { ArrowLeft, Calendar, Clock, Share2 } from 'lucide-react';
 import { motion } from 'motion/react';
 import Link from 'next/link';
-import { useState } from 'react';
+import { useState, type FormEvent } from 'react';
 import { posts, type Post } from '../data/posts';
+import { buildWhatsAppUrl } from '../lib/whatsapp';
 import { Button } from './Button';
 
 export default function PostContent({ post }: { post: Post }) {
   const [copied, setCopied] = useState(false);
+  const [newsletterEmail, setNewsletterEmail] = useState('');
   const relatedPosts = posts.filter((p) => p.id !== post.id).slice(0, 2);
+
+  const handleNewsletterSubmit = (e: FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    const text = `Olá, Rogério! Gostaria de me inscrever nas Cartas Semanais — meu e-mail é ${newsletterEmail.trim()}.`;
+    window.open(buildWhatsAppUrl(text), '_blank');
+  };
 
   const handleShare = async () => {
     if (typeof window === 'undefined') return;
@@ -172,14 +180,18 @@ export default function PostContent({ post }: { post: Post }) {
               Receba reflexões exclusivas sobre psicologia e bem-estar
               diretamente em sua caixa de entrada.
             </p>
-            <form className='space-y-4' onSubmit={(e) => e.preventDefault()}>
+            <form className='space-y-4' onSubmit={handleNewsletterSubmit}>
               <input
                 type='email'
+                required
                 placeholder='Seu melhor e-mail'
+                value={newsletterEmail}
+                onChange={(e) => setNewsletterEmail(e.target.value)}
+                autoComplete='email'
                 className='bg-surface-container-lowest px-5 py-4 border-none rounded-xl focus:ring-1 focus:ring-primary w-full placeholder:text-on-surface-variant/50 text-sm'
               />
               <Button type='submit' variant='primary' size='md' className='w-full'>
-                Inscrever-se agora
+                Inscrever-se via WhatsApp
               </Button>
             </form>
             <p className='mt-4 text-[10px] text-on-surface-variant/60 text-center uppercase tracking-widest'>

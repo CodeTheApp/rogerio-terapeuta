@@ -12,8 +12,9 @@ import {
 import { motion } from 'motion/react';
 import Link from 'next/link';
 import { usePathname, useRouter, useSearchParams } from 'next/navigation';
-import { useEffect, useMemo, useState } from 'react';
+import { useEffect, useMemo, useState, type FormEvent } from 'react';
 import { posts } from '../data/posts';
+import { buildWhatsAppUrl } from '../lib/whatsapp';
 
 const PARAM_CATEGORIA = 'categoria';
 const PARAM_BUSCA = 'q';
@@ -92,6 +93,14 @@ export default function BlogContent() {
   const clearAllFilters = () => {
     setSelectedCategory(null);
     setSearchQuery('');
+  };
+
+  const [newsletterEmail, setNewsletterEmail] = useState('');
+
+  const handleNewsletterSubmit = (e: FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    const text = `Olá, Rogério! Gostaria de me inscrever nas Cartas Semanais — meu e-mail é ${newsletterEmail.trim()}.`;
+    window.open(buildWhatsAppUrl(text), '_blank');
   };
 
   return (
@@ -334,14 +343,21 @@ export default function BlogContent() {
               <p className='opacity-80 mb-6 text-sm'>
                 Receba reflexões exclusivas diretamente em seu e-mail.
               </p>
-              <form className='space-y-3' onSubmit={(e) => e.preventDefault()}>
+              <form className='space-y-3' onSubmit={handleNewsletterSubmit}>
                 <input
                   type='email'
+                  required
                   placeholder='Seu melhor e-mail'
+                  value={newsletterEmail}
+                  onChange={(e) => setNewsletterEmail(e.target.value)}
+                  autoComplete='email'
                   className='bg-surface-container-lowest/20 px-4 py-3 border border-on-tertiary-container/20 rounded-xl focus:ring-1 focus:ring-on-tertiary-container w-full text-on-tertiary-container placeholder:text-on-tertiary-container/60'
                 />
-                <button className='bg-on-tertiary-container hover:opacity-90 py-3 rounded-xl w-full font-bold text-tertiary-container transition-all'>
-                  Inscrever-se
+                <button
+                  type='submit'
+                  className='bg-on-tertiary-container hover:opacity-90 py-3 rounded-xl w-full font-bold text-tertiary-container transition-all cursor-pointer'
+                >
+                  Inscrever-se via WhatsApp
                 </button>
               </form>
             </div>

@@ -2,10 +2,9 @@
 
 import { motion } from 'motion/react';
 import { useState, type FormEvent } from 'react';
+import { buildWhatsAppUrl } from '../lib/whatsapp';
 import { Button } from './Button';
 import { InputField } from './InputField';
-
-const CONTACT_EMAIL = 'contato@vianaterapia.com';
 
 export default function ContatoForm() {
   const [name, setName] = useState('');
@@ -15,9 +14,16 @@ export default function ContatoForm() {
 
   const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    const body = `Nome: ${name}\nTelefone / WhatsApp: ${phone}\nAssunto: ${subject}\n\n${message}`;
-    const whatsapp = `https://wa.me/${phone}?text=${encodeURIComponent(body)}`;
-    window.open(whatsapp, '_blank');
+    const lines = [
+      'Olá, Rogério! Vim pelo site Viana Terapia.',
+      '',
+      `Nome: ${name}`,
+      `Telefone / WhatsApp: ${phone}`,
+    ];
+    if (subject.trim()) lines.push(`Assunto: ${subject}`);
+    lines.push('', message);
+
+    window.open(buildWhatsAppUrl(lines.join('\n')), '_blank');
   };
 
   return (
@@ -75,7 +81,7 @@ export default function ContatoForm() {
       </div>
 
       <Button type='submit' variant='primary' size='lg' className='w-full'>
-        Enviar Mensagem
+        Enviar pelo WhatsApp
       </Button>
     </motion.form>
   );

@@ -84,7 +84,7 @@ export default function SobreComoFunciona() {
               variant="primary"
               size="lg"
               iconLeft={<Calendar />}
-              onClick={() => router.push("/contato")}
+              onClick={() => router.push("/agendar")}
             >
               Agendar consulta
             </Button>

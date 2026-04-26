@@ -23,7 +23,12 @@ export default function CTA() {
             Sua saúde mental é a base de tudo. Escolha cuidar de você hoje.
           </p>
           <div className='flex md:flex-row flex-col justify-center items-center gap-6'>
-            <Button variant='primary' size='lg' iconLeft={<Calendar />}>
+            <Button
+              variant='primary'
+              size='lg'
+              iconLeft={<Calendar />}
+              onClick={() => router.push('/agendar')}
+            >
               Agendar minha consulta
             </Button>
             <Button

@@ -3,7 +3,7 @@
 import { Calendar, Menu, X } from 'lucide-react';
 import { AnimatePresence, motion } from 'motion/react';
 import Link from 'next/link';
-import { usePathname } from 'next/navigation';
+import { usePathname, useRouter } from 'next/navigation';
 import { useEffect, useState } from 'react';
 import { Button } from './Button';
 
@@ -37,6 +37,7 @@ const HOME_SECTION_IDS = ['especialidades', 'depoimentos'];
 
 export default function Navbar() {
   const pathname = usePathname();
+  const router = useRouter();
   const isHome = pathname === '/';
   const [activeSection, setActiveSection] = useState('inicio');
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
@@ -160,7 +161,12 @@ export default function Navbar() {
 
         <div className='flex items-center gap-2'>
           <div className='hidden md:block'>
-            <Button variant='primary' size='sm' iconLeft={<Calendar />}>
+            <Button
+              variant='primary'
+              size='sm'
+              iconLeft={<Calendar />}
+              onClick={() => router.push('/agendar')}
+            >
               Agendar Consulta
             </Button>
           </div>
@@ -207,7 +213,10 @@ export default function Navbar() {
                   variant='primary'
                   size='md'
                   iconLeft={<Calendar />}
-                  onClick={() => setIsMobileMenuOpen(false)}
+                  onClick={() => {
+                    setIsMobileMenuOpen(false);
+                    router.push('/agendar');
+                  }}
                 >
                   Agendar Consulta
                 </Button>

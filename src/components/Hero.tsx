@@ -27,7 +27,12 @@ export default function Hero() {
             fundamentada.
           </p>
           <div className='flex flex-wrap gap-4'>
-            <Button variant='primary' size='lg' iconLeft={<Calendar />}>
+            <Button
+              variant='primary'
+              size='lg'
+              iconLeft={<Calendar />}
+              onClick={() => router.push('/agendar')}
+            >
               Começar minha jornada
             </Button>
             <Button

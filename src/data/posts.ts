@@ -8,10 +8,34 @@ export interface Post {
   date: string;
   image: string;
   readTime: string;
-  featured?: boolean;
 }
 
-export const posts: Post[] = [
+const MONTHS_PT: Record<string, number> = {
+  janeiro: 0,
+  fevereiro: 1,
+  março: 2,
+  marco: 2,
+  abril: 3,
+  maio: 4,
+  junho: 5,
+  julho: 6,
+  agosto: 7,
+  setembro: 8,
+  outubro: 9,
+  novembro: 10,
+  dezembro: 11,
+};
+
+const parsePtDate = (s: string): number => {
+  const match = s.match(/^(\d{1,2})\s+de\s+([^\s,]+),\s*(\d{4})$/i);
+  if (!match) return 0;
+  const [, day, monthName, year] = match;
+  const month = MONTHS_PT[monthName.toLowerCase()];
+  if (month === undefined) return 0;
+  return new Date(Number(year), month, Number(day)).getTime();
+};
+
+const rawPosts: Post[] = [
   {
     id: '1',
     slug: 'o-silencio-que-habita-em-nos',
@@ -45,7 +69,6 @@ export const posts: Post[] = [
     readTime: '8 min de leitura',
     image:
       'https://lh3.googleusercontent.com/aida-public/AB6AXuCQdor-N8-gKRTvBMNAw_i09WI37YsN6NHxtBKvizA4fqhh_5rXXCa6xhnU3a1yxu5jr9xBt6ijjIQLt95BtgViZJDCvr1prCeaNl9OaYpl12k7kL6Euep89x-mVS3qli1TBxy4IY1hoyunMjpKI-THpN4H277O3XlKLCjcWFwevyTPBCBym7Bws3e9O9gJaYxykGqZdy7VDwbWvYKEnflKcFqnH-6EkyU7u_px5U-_YB9E5V8m2okr2ainTao4gyMMcrBwv9CJTVk',
-    featured: true,
   },
   {
     id: '2',
@@ -145,4 +168,51 @@ export const posts: Post[] = [
     image:
       'https://lh3.googleusercontent.com/aida-public/AB6AXuDk_nC8JUgmpZuCduKdqiHBzZbV6c2ibqF6eiP5bX2V5VN9BQq7B6jp5rCo6J8FmPEvvvmk9QFSl7rzLnTxAcWQsRriUiAMwZjq0d0DiYiJ_d9H4ncT6__aiKvLnI7mS3vN3Xi8wXWjkbpZUNRyZp1lmWilh54JO8gRSu8FspQfbceikd01VifpdcVlw6ZY4jFbvr0uJSdBCoDiC5X_1aMhSOQxYl9a5LiSnMHjDLiczu1fxDdOfKezPh47eVWh8VoffVtjmDh5hHc',
   },
+  {
+    id: '6',
+    slug: 'estetica-visual-confianca-antes-da-palavra',
+    title:
+      'Por que a estética visual do seu consultório influencia antes mesmo da primeira palavra',
+    excerpt:
+      'Como o cérebro forma impressões em milissegundos e por que cuidar da identidade visual é o primeiro ato clínico de acolhimento.',
+    content: `
+    <p>Quando alguém entra no site do seu psicanalista, no Instagram da clínica ou recebe um cartão de visita, uma decisão silenciosa já está sendo tomada. Ela acontece antes que o pensamento racional entre em cena.</p>
+
+    <p>A neurociência mostra que o cérebro humano processa estímulos visuais em milissegundos. Pesquisas indicam que conseguimos identificar o conteúdo de uma imagem complexa em menos de 150 milissegundos, muito antes de qualquer raciocínio consciente sobre o que estamos vendo. É o que Daniel Kahneman chamou de <strong>"Sistema 1"</strong>: uma resposta automática, rápida e emocional, que precede o pensamento deliberado.</p>
+
+    <h2>O que isso significa na prática</h2>
+    <p>Antes do paciente ler "psicanálise clínica" no seu site, o cérebro dele já formou uma impressão sobre você. Cores, tipografia, espaçamento, qualidade das imagens, organização da página. Tudo isso é interpretado como sinal de confiança, cuidado e profissionalismo. Ou o contrário.</p>
+
+    <p>No contexto da saúde mental, isso ganha um peso ainda maior. Quem busca um psicanalista geralmente está em um momento de vulnerabilidade. O ambiente visual precisa transmitir, sem dizer uma palavra:</p>
+
+    <ul>
+      <li><strong>Segurança:</strong> esse é um lugar onde posso me abrir.</li>
+      <li><strong>Profissionalismo:</strong> há rigor e seriedade no trabalho.</li>
+      <li><strong>Acolhimento:</strong> não vou ser julgado aqui.</li>
+    </ul>
+
+    <blockquote>"O primeiro contato com quem chega não acontece nas palavras. Acontece nos olhos, em segundos."</blockquote>
+
+    <h2>Estética visual não é vaidade, é comunicação</h2>
+    <p>Existe uma ideia equivocada de que investir em design é algo "estético" no sentido superficial. Para um consultório, design é o primeiro ato clínico de cuidado com quem chega. É a forma como você diz "te recebo bem" antes mesmo do primeiro olá.</p>
+
+    <p>Cores, por exemplo, não são neutras. Tons frios e equilibrados tendem a transmitir tranquilidade. Alto contraste e cores saturadas podem gerar alerta. Tipografias com bom espaçamento facilitam a leitura para quem já está com a mente cansada. Imagens reais criam identificação onde bancos de imagem genéricos criam distância.</p>
+
+    <h2>A confiança começa antes da consulta</h2>
+    <p>A relação terapêutica se constrói na escuta, no vínculo, no tempo. Mas o primeiro contato, aquele que decide se o paciente vai ou não marcar a sessão, acontece nos olhos, em segundos.</p>
+
+    <p>Cuidar da identidade visual do consultório é, no fundo, estender o cuidado clínico para fora da sala. É garantir que a mensagem certa chegue antes mesmo das palavras.</p>
+
+    <p><em>Se você está pensando em começar uma análise, te convido a conhecer um pouco mais sobre o trabalho aqui no consultório. </br><a href="/agendar">Agende sua consulta</a> e dê o primeiro passo.</em></p>
+  `,
+    category: 'Reflexão',
+    date: '18 de Maio, 2026',
+    readTime: '2 min de leitura',
+    image:
+      'https://images.unsplash.com/photo-1631832293782-2eda7804489b?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8N3x8c29mdCUyMG1vcm5pbmclMjBsaWdodCUyMHdpbmRvd3xlbnwwfHwwfHx8MA%3D%3D',
+  },
 ];
+
+export const posts: Post[] = [...rawPosts].sort(
+  (a, b) => parsePtDate(b.date) - parsePtDate(a.date),
+);

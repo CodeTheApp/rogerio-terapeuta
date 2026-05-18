@@ -75,10 +75,10 @@ export default function BlogContent() {
   const trimmedQuery = searchQuery.trim();
   const isFiltering = Boolean(selectedCategory) || trimmedQuery.length > 0;
 
-  const featuredPost = posts.find((p) => p.featured);
+  const featuredPost = posts[0];
   const visibleFeatured = isFiltering ? null : featuredPost;
   const visiblePosts = useMemo(() => {
-    const base = isFiltering ? posts : posts.filter((p) => !p.featured);
+    const base = isFiltering ? posts : posts.slice(1);
     return base.filter(
       (p) =>
         (!selectedCategory || p.category === selectedCategory) &&

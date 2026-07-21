@@ -37,6 +37,59 @@ const parsePtDate = (s: string): number => {
 
 const rawPosts: Post[] = [
   {
+    id: '8',
+    slug: 'solidao-solitude-solicitude',
+    title:
+      'Solidão e Solicitude: a diferença entre estar só e saber se relacionar na ótica da psicanálise',
+    excerpt:
+      'Nunca estivemos tão conectados e, ao mesmo tempo, tão sozinhos. Entre a solidão que machuca e a solitude que fortalece existe um terceiro caminho: a solicitude, a capacidade de olhar para o outro com cuidado e responsabilidade afetiva.',
+    content: `
+      <p>Vivemos em uma época marcada por profundas contradições. Nunca estivemos tão conectados por meio das redes sociais e das tecnologias de comunicação, mas, ao mesmo tempo, nunca ouvimos tantos relatos de pessoas que se sentem profundamente sozinhas. A solidão tornou-se um dos grandes desafios emocionais da sociedade contemporânea. Entretanto, existe uma diferença importante entre solidão e solicitude, e compreendê-la pode transformar a maneira como enxergamos nossos relacionamentos e nossa própria saúde emocional.</p>
+
+      <p>Na perspectiva da psicanálise, a solidão não é apenas a ausência de pessoas ao nosso redor. Muitas vezes, alguém pode estar cercado por familiares, amigos ou colegas de trabalho e, ainda assim, experimentar um intenso vazio interior. Isso acontece porque a verdadeira solidão nasce quando o sujeito não consegue estabelecer vínculos afetivos seguros consigo mesmo e com o outro.</p>
+
+      <p>Desde os primeiros anos de vida, nossa forma de nos relacionarmos é construída a partir das experiências vividas com aqueles que cuidam de nós. Quando a criança encontra acolhimento, proteção, escuta e afeto, desenvolve gradualmente a capacidade de confiar nas pessoas e em si mesma. Porém, quando essas experiências são marcadas por abandono, rejeição, negligência ou críticas constantes, podem surgir feridas emocionais profundas que acompanham o indivíduo durante toda a vida.</p>
+
+      <p>É justamente nesse ponto que a psicanálise compreende a solidão como uma experiência psíquica. Muitas pessoas não têm medo de ficar sozinhas fisicamente; elas têm medo do encontro consigo mesmas. Quando o silêncio chega, surgem lembranças dolorosas, inseguranças, culpas e conflitos que permaneceram reprimidos durante anos. Por isso, algumas pessoas vivem constantemente ocupadas, cercadas por distrações ou buscando relacionamentos sucessivos. Não porque precisem do outro, mas porque desejam fugir da própria dor.</p>
+
+      <p>Entretanto, existe outro caminho possível: o da solicitude.</p>
+
+      <figure class="my-12">
+        <img src="/blog/solidao-solitude-solicitude.jpg" alt="Mão pousada com delicadeza sobre o braço de outra pessoa, em luz dourada e acolhedora" class="rounded-3xl w-full" />
+      </figure>
+
+      <p>Solicitude é a capacidade de olhar para o outro com cuidado, respeito e responsabilidade afetiva. Antes de ser um comportamento externo, ela representa uma postura interior. Uma pessoa solícita não apenas oferece ajuda quando necessário, mas reconhece a existência do outro como alguém digno de atenção e acolhimento.</p>
+
+      <p>Curiosamente, a solicitude só é plenamente possível quando aprendemos a desenvolver uma relação saudável conosco mesmos. Quem vive em permanente guerra interior dificilmente consegue oferecer paz aos outros. Quem nunca experimentou acolhimento emocional encontra enorme dificuldade em acolher.</p>
+
+      <p>A clínica psicanalítica frequentemente revela esse fenômeno. Muitos pacientes chegam dizendo sentir-se abandonados, mas, ao longo do processo terapêutico, descobrem que também abandonam a si mesmos. Ignoram seus sentimentos, desrespeitam seus limites, anulam seus desejos e vivem exclusivamente para atender às expectativas alheias. Nesses casos, a solidão não nasce apenas da falta de companhia, mas da ausência de uma relação verdadeira consigo mesmo.</p>
+
+      <p>Freud demonstrou que boa parte dos nossos conflitos permanece inconsciente. Aquilo que não elaboramos continua influenciando nossos pensamentos, emoções e comportamentos. Assim, experiências antigas de abandono podem fazer com que um adulto interprete pequenos afastamentos como rejeições definitivas. Uma demora em responder uma mensagem, por exemplo, pode despertar angústias muito maiores do que a situação realmente justificaria.</p>
+
+      <p>É nesse contexto que a solicitude adquire um papel terapêutico. Quando uma pessoa encontra relações marcadas por respeito, escuta e empatia, ela começa lentamente a reconstruir sua capacidade de confiar. A experiência emocional corretiva oferecida por vínculos saudáveis ajuda o psiquismo a reorganizar antigos padrões de sofrimento.</p>
+
+      <p>No consultório, o próprio vínculo entre terapeuta e paciente representa um exercício de solicitude. O analista escuta sem julgamentos precipitados, oferece um espaço seguro para a livre expressão e auxilia o paciente a compreender os significados ocultos de seus conflitos. Essa escuta cuidadosa favorece a integração daquilo que antes permanecia fragmentado.</p>
+
+      <p>Mas a solicitude não deve existir apenas dentro da terapia. Ela precisa alcançar os relacionamentos familiares, conjugais, profissionais e sociais. Demonstrar interesse genuíno, ouvir antes de responder, respeitar os limites do outro, reconhecer suas dores e evitar julgamentos precipitados são atitudes que fortalecem vínculos e diminuem o sentimento de isolamento emocional.</p>
+
+      <p>É importante destacar que aprender a ficar sozinho também faz parte do amadurecimento psicológico. Existe uma grande diferença entre solidão e solitude. A solidão costuma ser marcada pelo sofrimento decorrente da sensação de abandono. A solitude, por outro lado, representa a capacidade saudável de desfrutar da própria companhia. Quem desenvolve essa habilidade não depende da presença constante de outras pessoas para sentir-se completo.</p>
+
+      <p>A psicanálise busca justamente conduzir o indivíduo a essa maturidade emocional. Ao compreender sua própria história, reconhecer seus conflitos inconscientes e elaborar suas dores, a pessoa deixa de buscar desesperadamente nos outros aquilo que precisa construir dentro de si.</p>
+
+      <p>Quando isso acontece, a solicitude deixa de ser um esforço e torna-se uma consequência natural. Quem aprende a cuidar de si passa a cuidar melhor dos outros. Quem encontra paz interior oferece relações mais saudáveis. Quem supera o medo do abandono já não vive aprisionado pela necessidade constante de aprovação.</p>
+
+      <p>Vivemos em uma sociedade que valoriza a aparência das relações, mas nem sempre sua profundidade. Ter centenas de contatos nas redes sociais não significa possuir vínculos verdadeiros. A psicanálise nos lembra que a qualidade das relações importa muito mais do que sua quantidade.</p>
+
+      <p>Talvez o maior desafio da vida emocional seja justamente este: transformar a solidão que machuca em solitude que fortalece e, dessa experiência, desenvolver uma solicitude genuína para com aqueles que caminham ao nosso lado.</p>
+
+      <p>Quando aprendemos a escutar nossa própria história sem medo, tornamo-nos capazes de escutar também a história do outro. E é nesse encontro entre autoconhecimento e cuidado que nascem os relacionamentos mais saudáveis, mais maduros e verdadeiramente humanos.</p>
+    `,
+    category: 'Relacionamentos',
+    date: '21 de Julho, 2026',
+    readTime: '6 min de leitura',
+    image: '/blog/solidao-solitude-hero.jpg',
+  },
+  {
     id: '7',
     slug: 'solidao-pastoral-peso-invisivel',
     title: 'A Solidão Pastoral: O Peso Invisível dos Que Cuidam de Todos',
